@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import edu.museu.entity.Obra;
+import edu.museu.infrastructure.IntermediarioExposicaoDAO;
 import edu.museu.infrastructure.ObraDAO;
 
 public class ObraControl {
@@ -52,7 +53,9 @@ public class ObraControl {
 	}
 	public void deletar(Obra obra){
 		ObraDAO dao = new ObraDAO();
-		if (dao.delete(obra.getId()) < 1){
+		IntermediarioExposicaoDAO dao2 = new IntermediarioExposicaoDAO();
+		dao2.deleteByObra(obra.getId());
+		if (dao.delete(obra.getId()) < 1 ){
 			JOptionPane.showMessageDialog(null, "Erro ao excluir cadastro!", null, JOptionPane.ERROR_MESSAGE);
 		} else {
 			JOptionPane.showMessageDialog(null, "Cadastro excluido com sucesso!", null, JOptionPane.INFORMATION_MESSAGE);			

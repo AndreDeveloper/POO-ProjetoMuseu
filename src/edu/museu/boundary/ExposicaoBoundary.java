@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -13,14 +15,21 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 
 import com.toedter.calendar.JDateChooser;
 
 import edu.museu.control.AuxiliarPesquisaControl;
 import edu.museu.control.ComponenteFormater;
+import edu.museu.control.ExposicaoControl;
 import edu.museu.control.ObrasToExposicao;
+import edu.museu.control.Observer;
+import edu.museu.entity.Exposicao;
+import edu.museu.entity.Local;
+import edu.museu.entity.Obra;
+import edu.museu.entity.Visitante;
 
-public class ExposicaoBoundary {
+public class ExposicaoBoundary implements ActionListener, Observer{
 	private JLabel lblnome = new JLabel("Nome");
 	private JLabel lblDataInicio = new JLabel("Data de Inicio");
 	private JLabel lblDatafim = new JLabel("Data de Termino");
@@ -48,6 +57,7 @@ public class ExposicaoBoundary {
 	private JPanel painelPrincipal = new JPanel(new BorderLayout());
 	
 	private ObrasToExposicao toExposicao = new ObrasToExposicao();
+	private ExposicaoControl control = new ExposicaoControl();
 	
 	public JPanel getPainelPrincipal() {
 		return painelPrincipal;
@@ -116,7 +126,9 @@ public class ExposicaoBoundary {
 		painelCentro.add(painelTabelaExpo);
 		
 		tabelaObras.setModel(toExposicao);
-		
+		tabelaExposicao.setModel(control);
+		tabelaObras.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		tabelaExposicao.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
 		//formatando paineis
 		ComponenteFormater.formataJPanel(painelDados);
@@ -171,6 +183,14 @@ public class ExposicaoBoundary {
 				new ImageIcon(VisitanteBoundary.class.getResource("/edu/museu/resource/back.png"))
 				);
 		
+		btnAdiciona.addActionListener(this);
+		btnAlterar.addActionListener(this);
+		btnExcluir.addActionListener(this);
+		btnPesquisar.addActionListener(this);
+		btnRemove.addActionListener(this);
+		btnSalvar.addActionListener(this);
+		btnVoltar.addActionListener(this);
+		
 		lblnome.setPreferredSize(lblIngresso.getPreferredSize());
 		lblDataInicio.setPreferredSize(lblIngresso.getPreferredSize());
 		dcDataFim.setPreferredSize(txtIngresso.getPreferredSize());
@@ -184,5 +204,69 @@ public class ExposicaoBoundary {
 		painelPrincipal.add(painelCentro,BorderLayout.CENTER);
 		painelPrincipal.add(painelBotoes, BorderLayout.SOUTH);
 
+	}
+	public Exposicao formToExposicao(){
+		Exposicao exposicao = new Exposicao();
+		exposicao.setValor(Double.parseDouble(txtIngresso.getText()));
+		exposicao.setNome(txtNome.getText());
+		exposicao.setDataInicio(dcDataInicio.getDate());
+		exposicao.setDataFim(dcDataFim.getDate());
+		
+		return exposicao;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == btnAdiciona && tabelaObras.getSelectedRow() > 0){
+			control.add(toExposicao.getLista().get(tabelaObras.getSelectedRow()));
+			tabelaExposicao.invalidate();
+			tabelaExposicao.revalidate();
+		}else if(e.getSource() == btnRemove && tabelaExposicao.getSelectedRow() > -1){
+			control.remove(control.getListaExposicao().get(tabelaExposicao.getSelectedRow()));
+			tabelaExposicao.clearSelection();
+			tabelaExposicao.invalidate();
+			tabelaExposicao.revalidate();
+		}else if(e.getSource() == btnSalvar){
+			control.salvar(formToExposicao(), control.getListaExposicao());
+		}else if(e.getSource() == btnPesquisar){
+			AuxiliarPesquisa pesquisa = new AuxiliarPesquisa(txtNome, "Exposicao");
+			pesquisa.addObserver(this);
+			pesquisa.show();
+		}
+	}
+
+	@Override
+	public void update(String noticia) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(Obra obra) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(Visitante visitante) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(Local local) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(Exposicao exposicao) {
+		txtIngresso.setText("" + exposicao.getValor());
+		dcDataInicio.setDate(exposicao.getDataInicio());
+		dcDataFim.setDate(exposicao.getDataFim());
+		
+		control.pesquisaObras(exposicao.getId());
+		tabelaExposicao.invalidate();
+		tabelaExposicao.revalidate();
 	}
 }

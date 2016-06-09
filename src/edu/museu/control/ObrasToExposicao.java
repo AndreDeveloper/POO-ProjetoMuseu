@@ -12,6 +12,14 @@ import edu.museu.infrastructure.ObraDAO;
 public class ObrasToExposicao implements TableModel {
 	private List<Obra> lista = new ArrayList<Obra>();
 
+	public List<Obra> getLista() {
+		return lista;
+	}
+
+	public void setLista(List<Obra> lista) {
+		this.lista = lista;
+	}
+
 	public ObrasToExposicao() {
 		lista = new ObraDAO().selectAll();
 	}

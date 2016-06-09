@@ -7,9 +7,11 @@ import javax.swing.JTable;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
+import edu.museu.entity.Exposicao;
 import edu.museu.entity.Local;
 import edu.museu.entity.Obra;
 import edu.museu.entity.Visitante;
+import edu.museu.infrastructure.ExposicaoDAO;
 import edu.museu.infrastructure.LocalDAO;
 import edu.museu.infrastructure.ObraDAO;
 import edu.museu.infrastructure.VisitanteDAO;
@@ -18,10 +20,12 @@ public class AuxiliarPesquisaControl implements TableModel{
 	private List<Obra> listaObras;
 	private List<Visitante> listaVisitante;
 	private List<Local> listaLocais;
+	private List<Exposicao> listaExposicoes;
 	private String param = "";
 	private ObraDAO obraDAO = new ObraDAO();
 	private VisitanteDAO visitanteDAO = new VisitanteDAO();
 	private LocalDAO localDAO = new LocalDAO();
+	private ExposicaoDAO exposicaoDAO = new ExposicaoDAO();
 	
 	public List preencheTabela(String param){
 		this.param = param;
@@ -36,6 +40,10 @@ public class AuxiliarPesquisaControl implements TableModel{
 		else if (param.equals("Local") ){
 			listaLocais = localDAO.selectAll();
 			return listaLocais;
+		}
+		else if (param.equals("Exposicao") ){
+			listaExposicoes = exposicaoDAO.selectAll();
+			return listaExposicoes;
 		}
 		return null;
 	}
@@ -54,7 +62,11 @@ public class AuxiliarPesquisaControl implements TableModel{
 		}  else if (param.equals("Local") ){
 			listaLocais = localDAO.selectByName(value);
 			return listaLocais;
-		} 
+		}  else if (param.equals("Exposicao") ){
+			listaExposicoes = exposicaoDAO.selectByName(value);
+			return listaExposicoes;
+		}
+		
 		return null;
 	}
 	@Override
@@ -76,6 +88,7 @@ public class AuxiliarPesquisaControl implements TableModel{
 	public int getColumnCount() {
 		// TODO Auto-generated method stub
 		if(param.equals("Local")) return 4;
+		if(param.equals("Exposicao")) return 3;
 		return 2;
 	}
 	@Override
@@ -91,7 +104,10 @@ public class AuxiliarPesquisaControl implements TableModel{
 		else if(param.equals("Local")){
 			String[] aux = {"id","Nome","Responsavel", "Telefone"};
 			nome = aux;
-	}
+		}else if(param.equals("Exposicao")){
+			String[] aux = {"id", "Nome","Valor"};
+			nome = aux;
+		}
 		return nome[arg0];
 	}
 	@Override
@@ -103,6 +119,9 @@ public class AuxiliarPesquisaControl implements TableModel{
 		}
 		else if(param.equals("Local")){
 			return listaLocais.size();
+		}
+		else if(param.equals("Exposicao")){
+			return listaExposicoes.size();
 		}
 		return 0;
 	}
@@ -121,6 +140,10 @@ public class AuxiliarPesquisaControl implements TableModel{
 				Local local = listaLocais.get(arg0);
 				return local.getId();
 			}
+			else if(param.equals("Exposicao")){
+				Exposicao exposicao = listaExposicoes.get(arg0);
+				return exposicao.getId();
+			}
 			break;
 		case 1: 
 			if(param.equals("Autor") || param.equals("Nome")){
@@ -132,12 +155,18 @@ public class AuxiliarPesquisaControl implements TableModel{
 			}else if(param.equals("Local")){
 				Local local = listaLocais.get(arg0);
 				return local.getNomeLocal();
+			}else if(param.equals("Exposicao")){
+				Exposicao exposicao = listaExposicoes.get(arg0);
+				return exposicao.getNome();
 			}
 			break;
 		case 2: 
 			if(param.equals("Local")){
 				Local local = listaLocais.get(arg0);
 				return local.getResponsavel();
+			}else if(param.equals("Exposicao")){
+				Exposicao exposicao = listaExposicoes.get(arg0);
+				return exposicao.getValor();
 			}
 			break;		
 		case 3: 

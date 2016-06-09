@@ -25,6 +25,7 @@ import edu.museu.control.ComponenteFormater;
 import edu.museu.control.ImagemFormater;
 import edu.museu.control.LocalControl;
 import edu.museu.control.Observer;
+import edu.museu.entity.Exposicao;
 import edu.museu.entity.Local;
 import edu.museu.entity.Obra;
 import edu.museu.entity.Visitante;
@@ -434,6 +435,13 @@ public class LocaisBoundary implements ActionListener, Observer{
 	@Override
 	public void update(Local local) {
 		localToForm(local);		
+	}
+
+
+	@Override
+	public void update(Exposicao exposicao) {
+		// TODO Auto-generated method stub
+		
 	}
 
 

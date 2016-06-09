@@ -3,22 +3,22 @@ package edu.museu.entity;
 import java.util.Date;
 
 public class Exposicao {
-	private long exposicao_id;
-	private String exposicao_nome;
+	private long id;
+	private String nome;
 	private double valor;
 	private Date dataInicio;
 	private Date dataFim;
-	public long getExposicao_id() {
-		return exposicao_id;
+	public long getId() {
+		return id;
 	}
-	public void setExposicao_id(long exposicao_id) {
-		this.exposicao_id = exposicao_id;
+	public void setId(long exposicao_id) {
+		this.id = exposicao_id;
 	}
-	public String getExposicao_nome() {
-		return exposicao_nome;
+	public String getNome() {
+		return nome;
 	}
-	public void setExposicao_nome(String exposicao_nome) {
-		this.exposicao_nome = exposicao_nome;
+	public void setNome(String exposicao_nome) {
+		this.nome = exposicao_nome;
 	}
 	public double getValor() {
 		return valor;

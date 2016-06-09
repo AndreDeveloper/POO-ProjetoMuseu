@@ -25,6 +25,7 @@ import javax.swing.table.DefaultTableModel;
 import edu.museu.control.AuxiliarPesquisaControl;
 import edu.museu.control.Observer;
 import edu.museu.control.Subject;
+import edu.museu.entity.Exposicao;
 import edu.museu.entity.Local;
 import edu.museu.entity.Obra;
 import edu.museu.entity.Visitante;
@@ -44,7 +45,8 @@ public class AuxiliarPesquisa implements MouseListener, KeyListener, Subject{
 	private List<Observer> lista = new ArrayList<Observer>();
 	private List<Obra> listaObra;
 	private List<Visitante> listaVisitante;
-	private List<Local>listaLocais;
+	private List<Local> listaLocais;
+	private List<Exposicao> listaExposicoes;
 	
 	
 	
@@ -118,6 +120,7 @@ public class AuxiliarPesquisa implements MouseListener, KeyListener, Subject{
 		listaObra = controller.preencheTabela(param);
 		listaVisitante = controller.preencheTabela(param);
 		listaLocais = controller.preencheTabela(param);
+		listaExposicoes = controller.preencheTabela(param);
 		tabela.setModel(controller);
 		tabela.invalidate();
 		tabela.revalidate();
@@ -166,6 +169,16 @@ public class AuxiliarPesquisa implements MouseListener, KeyListener, Subject{
 			for (Local local: listaLocais){
 				if (local.getNomeLocal().equals(Nome)){
 					notificar(local);
+				}
+			}
+			break;
+		case "Exposicao":
+			long idExposicao =  (Long)tabela.getValueAt(linha, 0);
+			String nomeExposicao = (String)tabela.getValueAt(linha, 1);
+			txtCampo.setText(nomeExposicao);
+			for (Exposicao exposicao: listaExposicoes){
+				if (idExposicao==exposicao.getId()){
+					notificar(exposicao);
 				}
 			}
 			break;
@@ -269,5 +282,11 @@ public class AuxiliarPesquisa implements MouseListener, KeyListener, Subject{
 			o.update(local);
 		}
 		
+	}
+	@Override
+	public void notificar(Exposicao exposicao) {
+		for(Observer o: lista){
+			o.update(exposicao);
+		}
 	}
 }

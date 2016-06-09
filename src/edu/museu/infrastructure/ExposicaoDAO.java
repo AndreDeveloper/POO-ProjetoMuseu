@@ -27,7 +27,7 @@ public class ExposicaoDAO {
 
 			PreparedStatement stmt = con.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
 
-			stmt.setString(1, exposicao.getExposicao_nome());
+			stmt.setString(1, exposicao.getNome());
 			stmt.setDouble(2, exposicao.getValor());
 			stmt.setDate(3, new Date(exposicao.getDataInicio().getTime()));
 			stmt.setDate(4, new Date(exposicao.getDataFim().getTime()));			
@@ -60,11 +60,11 @@ public class ExposicaoDAO {
 								
 			PreparedStatement stmt = con.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
 
-			stmt.setString(1, exposicao.getExposicao_nome());
+			stmt.setString(1, exposicao.getNome());
 			stmt.setDouble(2, exposicao.getValor());
 			stmt.setDate(3, new Date(exposicao.getDataInicio().getTime()));
 			stmt.setDate(4, new Date(exposicao.getDataFim().getTime()));
-			stmt.setLong(4, exposicao.getExposicao_id());
+			stmt.setLong(4, exposicao.getId());
 
 			JDBCUtil.close(con);
 		} catch (Exception e) {
@@ -108,8 +108,8 @@ public class ExposicaoDAO {
 
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				exposicao.setExposicao_id(rs.getInt("exposicao_id"));
-				exposicao.setExposicao_nome(rs.getString("exposicao_nome"));
+				exposicao.setId(rs.getInt("exposicao_id"));
+				exposicao.setNome(rs.getString("exposicao_nome"));
 				exposicao.setValor(rs.getDouble("exposicao_valor"));
 				exposicao.setDataInicio(rs.getDate("exposicao_dataInicio"));
 				exposicao.setDataFim(rs.getDate("exposicao_dataFim"));
@@ -135,8 +135,8 @@ public class ExposicaoDAO {
 
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				exposicao.setExposicao_id(rs.getInt("exposicao_id"));
-				exposicao.setExposicao_nome(rs.getString("exposicao_nome"));
+				exposicao.setId(rs.getInt("exposicao_id"));
+				exposicao.setNome(rs.getString("exposicao_nome"));
 				exposicao.setValor(rs.getDouble("exposicao_valor"));
 				exposicao.setDataInicio(rs.getDate("exposicao_dataInicio"));
 				exposicao.setDataFim(rs.getDate("exposicao_dataFim"));
@@ -151,7 +151,6 @@ public class ExposicaoDAO {
 	}
 	
 	public List<Exposicao> selectAll() {
-		Exposicao exposicao = new Exposicao();
 		List<Exposicao> exposicoes = new ArrayList<Exposicao>();
 		try {
 			Connection con = JDBCUtil.getConnection();
@@ -161,8 +160,9 @@ public class ExposicaoDAO {
 
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				exposicao.setExposicao_id(rs.getInt("exposicao_id"));
-				exposicao.setExposicao_nome(rs.getString("exposicao_nome"));
+				Exposicao exposicao = new Exposicao();
+				exposicao.setId(rs.getInt("exposicao_id"));
+				exposicao.setNome(rs.getString("exposicao_nome"));
 				exposicao.setValor(rs.getDouble("exposicao_valor"));
 				exposicao.setDataInicio(rs.getDate("exposicao_dataInicio"));
 				exposicao.setDataFim(rs.getDate("exposicao_dataFim"));
