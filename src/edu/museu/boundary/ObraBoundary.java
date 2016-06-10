@@ -57,7 +57,6 @@ public class ObraBoundary implements ActionListener, Observer{
 	private JButton btnExcluir = new JButton("Excluir");
 	private JButton btnCarregaImagem = new JButton("Carregar Imagem");
 	private JButton btnPesquisaObra = new JButton();
-	private JButton btnPesquisaAutor = new JButton();
 	private JButton btnVoltar = new JButton("Voltar");
 	private JPanel painelPrincipal = new JPanel(new GridLayout(1, 2, 0,0));
 	
@@ -110,7 +109,6 @@ public class ObraBoundary implements ActionListener, Observer{
 
 		linha2.add(lblNomeAutor);
 		linha2.add(txtAutor);
-		linha2.add(btnPesquisaAutor);
 
 		linha3.add(lblDataObra);
 		linha3.add(dcDataObra);
@@ -145,14 +143,10 @@ public class ObraBoundary implements ActionListener, Observer{
 		btnCarregaImagem.addActionListener(this);
 		btnAlterar.addActionListener(this);
 		btnExcluir.addActionListener(this);
-		btnPesquisaAutor.addActionListener(this);
 		btnPesquisaObra.addActionListener(this);
 		btnSalvar.addActionListener(this);
 		btnVoltar.addActionListener(this);
-		
-		btnPesquisaAutor.setIcon(
-				new ImageIcon(ObraBoundary.class.getResource("/edu/museu/resource/lupa_16.png"))
-				);
+
 		btnPesquisaObra.setIcon(
 				new ImageIcon(ObraBoundary.class.getResource("/edu/museu/resource/lupa_16.png"))
 				);
@@ -183,7 +177,6 @@ public class ObraBoundary implements ActionListener, Observer{
 		ComponenteFormater.formataJButton(btnAlterar);
 		ComponenteFormater.formataJButton(btnCarregaImagem);
 		ComponenteFormater.formataJButton(btnExcluir);
-		ComponenteFormater.formataJButton(btnPesquisaAutor);
 		ComponenteFormater.formataJButton(btnPesquisaObra);
 		ComponenteFormater.formataJButton(btnSalvar);
 		ComponenteFormater.formataJButton(btnVoltar);
@@ -316,34 +309,19 @@ public class ObraBoundary implements ActionListener, Observer{
 			telaDefault();
 		}else if(e.getSource() == btnVoltar){
 			telaDefault();
-		}else if(e.getSource() == btnPesquisaAutor){
-			AuxiliarPesquisa a  = new AuxiliarPesquisa(txtAutor, "Autor");
-			a.addObserver(this);
-			a.show();
-			telaAlterar();
 		}else if(e.getSource() == btnPesquisaObra){
-			AuxiliarPesquisa a = new AuxiliarPesquisa(txtObra, "Nome");
-		    a.addObserver(this);
-		    a.show();
+			FormPesquisa pesquisaObra = new PesquisaObra();
+			pesquisaObra.addObserver(this);
+		    pesquisaObra.show();
 		    telaAlterar();
 		}
 		
 	}
-
-
 	@Override
-	public void update(String noticia) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void update(Obra obra) {
-		this.obra = obra;
+	public void update(Object o) {
+		this.obra = (Obra) o;
 		obra.setImagem(control.getImage(obra.getId()));
 		obraToForm(obra);
-		
 	}
 
 
@@ -357,29 +335,5 @@ public class ObraBoundary implements ActionListener, Observer{
 		dcDataObra.setDate(obra.getDataObra());
 		disponibilidade.setSelected(obra.isDisponivel());
 		lblImagemObra.setIcon(obra.getImagem());
-	}
-
-
-	@Override
-	public void update(Visitante visitante) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void update(Local local) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void update(Exposicao exposicao) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
-	
+	}	
 }

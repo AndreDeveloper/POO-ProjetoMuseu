@@ -394,7 +394,7 @@ public class LocaisBoundary implements ActionListener, Observer{
 			control.salvar(formToLocal());
 			telaDefault();
 		}else if(e.getSource() == btnPesquisar){
-			AuxiliarPesquisa pesquisa = new AuxiliarPesquisa(txtNome, "Local");
+			FormPesquisa pesquisa = new PesquisaLocais();
 			pesquisa.addObserver(this);
 			pesquisa.show();
 			telaAlterar();
@@ -410,39 +410,9 @@ public class LocaisBoundary implements ActionListener, Observer{
 		
 	}
 
-
 	@Override
-	public void update(String noticia) {
-		// TODO Auto-generated method stub
-		
+	public void update(Object o) {
+		this.local = (Local) o;
+		localToForm(local);
 	}
-
-
-	@Override
-	public void update(Obra obra) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void update(Visitante visitante) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void update(Local local) {
-		localToForm(local);		
-	}
-
-
-	@Override
-	public void update(Exposicao exposicao) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
 }

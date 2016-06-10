@@ -123,7 +123,6 @@ public class ExposicaoDAO {
 	}
 	
 	public List<Exposicao> selectByName(String name) {
-		Exposicao exposicao = new Exposicao();
 		List<Exposicao> exposicoes = new ArrayList<Exposicao>();
 		try {
 			Connection con = JDBCUtil.getConnection();
@@ -131,10 +130,11 @@ public class ExposicaoDAO {
 			String query = "SELECT * FROM exposicao WHERE exposicao_nome LIKE ?";
 			PreparedStatement stmt = con.prepareStatement(query);
 
-			stmt.setString(1, name);
+			stmt.setString(1, "%" + name + "%");
 
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
+				Exposicao exposicao = new Exposicao();
 				exposicao.setId(rs.getInt("exposicao_id"));
 				exposicao.setNome(rs.getString("exposicao_nome"));
 				exposicao.setValor(rs.getDouble("exposicao_valor"));

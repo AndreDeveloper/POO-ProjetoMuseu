@@ -7,10 +7,5 @@ import edu.museu.entity.Visitante;
 
 public interface Observer {
 	
-	void update(String noticia);
-	void update(Obra obra);
-	void update(Visitante visitante);
-	void update(Local local);
-	void update(Exposicao exposicao);
-
+	void update(Object o);
 }

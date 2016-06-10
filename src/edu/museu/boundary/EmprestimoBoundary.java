@@ -27,10 +27,13 @@ import com.toedter.calendar.JDateChooser;
 
 import edu.museu.control.ComponenteFormater;
 import edu.museu.control.EmprestimoControl;
+import edu.museu.control.Observer;
 import edu.museu.entity.Emprestimo;
+import edu.museu.entity.Local;
+import edu.museu.entity.Obra;
 
 
-public class EmprestimoBoundary implements ActionListener, ListSelectionListener, MouseListener{
+public class EmprestimoBoundary implements ActionListener, ListSelectionListener, MouseListener, Observer{
 	private JLabel lblObra = new JLabel("Obra");
 	private JLabel lblNomeObra = new JLabel("Nome da obra");
 	private JLabel lblDestinatario = new JLabel("Destinatário");
@@ -277,11 +280,13 @@ public class EmprestimoBoundary implements ActionListener, ListSelectionListener
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnPesquisarObra){
-			AuxiliarPesquisa a  = new AuxiliarPesquisa(txtObra, txtNomeObra, "Autor");
-			a.show();
+			FormPesquisa pesquisa  = new PesquisaObra();
+			pesquisa.addObserver(this);
+			pesquisa.show();
 		}else if(e.getSource() == btnPesquisarLocal){
-			AuxiliarPesquisa a  = new AuxiliarPesquisa(txtDestinatario,txtNomeDestinatario, "Local");
-			a.show();
+			FormPesquisa pesquisa  = new PesquisaLocais();
+			pesquisa.addObserver(this);
+			pesquisa.show();
 		}else if(e.getSource() == btnSalvar && validaCampos()){
 			try {
 				control.salvar(formToEmprestimo());
@@ -331,11 +336,13 @@ public class EmprestimoBoundary implements ActionListener, ListSelectionListener
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		if(arg0.getSource() == txtObra || arg0.getSource() == txtNomeObra){
-			AuxiliarPesquisa a  = new AuxiliarPesquisa(txtObra, txtNomeObra, "Autor");
-			a.show();
+			FormPesquisa pesquisa  = new PesquisaObra();
+			pesquisa.addObserver(this);
+			pesquisa.show();
 		}else if(arg0.getSource() == txtDestinatario || arg0.getSource() == txtNomeDestinatario){
-			AuxiliarPesquisa a  = new AuxiliarPesquisa(txtDestinatario,txtNomeDestinatario, "Local");
-			a.show();
+			FormPesquisa pesquisa  = new PesquisaLocais();
+			pesquisa.addObserver(this);
+			pesquisa.show();
 		}
 		
 	}
@@ -361,6 +368,20 @@ public class EmprestimoBoundary implements ActionListener, ListSelectionListener
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(Object o) {
+		if (o.getClass() == Obra.class){
+			Obra obra = (Obra) o;
+			txtNomeObra.setText(obra.getNomeObra());
+			txtObra.setText("" + obra.getId());
+		}else if(o.getClass() == Local.class){
+			Local local = (Local) o;
+			txtDestinatario.setText("" + local.getId());
+			txtNomeDestinatario.setText(local.getNomeLocal());
+		}
 		
 	}
 }

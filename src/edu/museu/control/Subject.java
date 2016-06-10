@@ -8,9 +8,5 @@ import edu.museu.entity.Visitante;
 public interface Subject {
 	void addObserver(Observer o);
 	void removeObserver(Observer o);
-	void notificar(String noticia);
-	void notificar(Obra obra);
-	void notificar(Visitante visitante);
-	void notificar(Local local);
-	void notificar(Exposicao exposicao);
+	void notificar(Object object);
 }

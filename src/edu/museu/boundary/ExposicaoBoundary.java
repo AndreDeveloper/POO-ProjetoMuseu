@@ -24,6 +24,9 @@ import edu.museu.control.ComponenteFormater;
 import edu.museu.control.ExposicaoControl;
 import edu.museu.control.ObrasToExposicao;
 import edu.museu.control.Observer;
+import edu.museu.control.PesquisaControler;
+import edu.museu.control.PesquisaExposicaoControl;
+import edu.museu.control.PesquisaObraControl;
 import edu.museu.entity.Exposicao;
 import edu.museu.entity.Local;
 import edu.museu.entity.Obra;
@@ -56,7 +59,7 @@ public class ExposicaoBoundary implements ActionListener, Observer{
 	
 	private JPanel painelPrincipal = new JPanel(new BorderLayout());
 	
-	private ObrasToExposicao toExposicao = new ObrasToExposicao();
+	private PesquisaControler toExposicao = new PesquisaObraControl();
 	private ExposicaoControl control = new ExposicaoControl();
 	
 	public JPanel getPainelPrincipal() {
@@ -217,8 +220,8 @@ public class ExposicaoBoundary implements ActionListener, Observer{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == btnAdiciona && tabelaObras.getSelectedRow() > 0){
-			control.add(toExposicao.getLista().get(tabelaObras.getSelectedRow()));
+		if(e.getSource() == btnAdiciona && tabelaObras.getSelectedRow() > -1){
+			control.add((Obra) toExposicao.getLista().get(tabelaObras.getSelectedRow()));
 			tabelaExposicao.invalidate();
 			tabelaExposicao.revalidate();
 		}else if(e.getSource() == btnRemove && tabelaExposicao.getSelectedRow() > -1){
@@ -229,38 +232,16 @@ public class ExposicaoBoundary implements ActionListener, Observer{
 		}else if(e.getSource() == btnSalvar){
 			control.salvar(formToExposicao(), control.getListaExposicao());
 		}else if(e.getSource() == btnPesquisar){
-			AuxiliarPesquisa pesquisa = new AuxiliarPesquisa(txtNome, "Exposicao");
+			FormPesquisa pesquisa = new PesquisaExposicao();
 			pesquisa.addObserver(this);
 			pesquisa.show();
 		}
 	}
 
 	@Override
-	public void update(String noticia) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update(Obra obra) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update(Visitante visitante) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update(Local local) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update(Exposicao exposicao) {
+	public void update(Object exp) {
+		Exposicao exposicao = (Exposicao) exp;
+		txtNome.setText(exposicao.getNome());
 		txtIngresso.setText("" + exposicao.getValor());
 		dcDataInicio.setDate(exposicao.getDataInicio());
 		dcDataFim.setDate(exposicao.getDataFim());
