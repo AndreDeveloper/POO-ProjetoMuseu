@@ -1,6 +1,5 @@
 package edu.museu.control;
 
-import java.awt.Checkbox;
 import java.util.List;
 
 import javax.swing.event.TableModelListener;
@@ -8,8 +7,12 @@ import javax.swing.event.TableModelListener;
 import edu.museu.entity.Exposicao;
 import edu.museu.infrastructure.ExposicaoDAO;
 
-public class PesquisaExposicaoControl implements PesquisaControler{
+public class PesquisaExposicaoControl implements PesquisaControl{
 	private static List<Exposicao> lista = new ExposicaoDAO().selectAll();
+	
+	public PesquisaExposicaoControl(){
+		lista = new ExposicaoDAO().selectAll();
+	}
 	
 	@Override
 	public void addTableModelListener(TableModelListener l) {

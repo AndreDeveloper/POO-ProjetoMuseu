@@ -8,13 +8,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.museu.entity.ExposicaoListaAlteracaoEntity;
-import edu.museu.entity.IntermediarioExposicaoEntity;
+import edu.museu.entity.ObraExposicaoAlteracao;
+import edu.museu.entity.ObraExposicao;
 
-public class IntermediarioExposicaoDAO {
+public class ObraExposicaoDAO {
 //INSERT INTO `asgardprint01`.`Intermediaria_exposicao` (`exposicao_id`, `obra_id`) VALUES (1, 1);
 	
-	public long insert(List<IntermediarioExposicaoEntity> listaObras) throws SQLException{
+	public long insert(List<ObraExposicao> listaObras) throws SQLException{
 		long idGerado = 0;
 		try {
 
@@ -26,7 +26,7 @@ public class IntermediarioExposicaoDAO {
 
 			PreparedStatement stmt = con.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
 
-			for(IntermediarioExposicaoEntity item:
+			for(ObraExposicao item:
 				listaObras){
 			
 				stmt.setLong(1, item.getExposicao_id());
@@ -46,7 +46,7 @@ public class IntermediarioExposicaoDAO {
 
 		return idGerado;
 	}
-	public long insertByRow(ExposicaoListaAlteracaoEntity item) throws SQLException{
+	public long insertByRow(ObraExposicaoAlteracao item) throws SQLException{
 		long idGerado = 0;
 		try {
 
@@ -74,9 +74,9 @@ public class IntermediarioExposicaoDAO {
 
 		return idGerado;
 	}
-	public List<IntermediarioExposicaoEntity> selectById(Long id) {		
-		List<IntermediarioExposicaoEntity> lista = 
-				new ArrayList<IntermediarioExposicaoEntity>();
+	public List<ObraExposicao> selectById(Long id) {		
+		List<ObraExposicao> lista = 
+				new ArrayList<ObraExposicao>();
 		try {
 			Connection con = JDBCUtil.getConnection();
 
@@ -88,7 +88,7 @@ public class IntermediarioExposicaoDAO {
 
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				IntermediarioExposicaoEntity entity = new IntermediarioExposicaoEntity();
+				ObraExposicao entity = new ObraExposicao();
 				entity.setExposicao_id(rs.getLong("exposicao_id"));
 				entity.setObra_id(rs.getLong("obra_id"));				
 				

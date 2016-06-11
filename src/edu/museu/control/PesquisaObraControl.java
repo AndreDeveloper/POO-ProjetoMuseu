@@ -9,7 +9,7 @@ import javax.swing.event.TableModelListener;
 import edu.museu.entity.Obra;
 import edu.museu.infrastructure.ObraDAO;
 
-public class PesquisaObraControl implements PesquisaControler{
+public class PesquisaObraControl implements PesquisaControl{
 	private static List<Obra> lista = new ObraDAO().selectAll();
 	
 	@Override

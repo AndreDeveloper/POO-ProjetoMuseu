@@ -5,11 +5,11 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.table.TableModel;
 
-import edu.museu.control.PesquisaControler;
+import edu.museu.control.PesquisaControl;
 import edu.museu.control.PesquisaLocaisControl;
 
 public class PesquisaLocais extends FormPesquisa{
-	private PesquisaControler control = new PesquisaLocaisControl();
+	private PesquisaControl control = new PesquisaLocaisControl();
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		int linha = tabela.getSelectedRow();

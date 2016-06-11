@@ -8,7 +8,7 @@ import edu.museu.entity.Local;
 import edu.museu.entity.Obra;
 import edu.museu.infrastructure.LocalDAO;
 
-public class PesquisaLocaisControl implements PesquisaControler{
+public class PesquisaLocaisControl implements PesquisaControl{
 	private List<Local> lista = new LocalDAO().selectAll();
 	
 	@Override

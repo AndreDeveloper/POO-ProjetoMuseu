@@ -1,17 +1,9 @@
 package edu.museu.entity;
 
-public class ExposicaoListaAlteracaoEntity {
+public class ObraExposicao {
 	private long exposicao_id;
 	private long obra_id;
-	private boolean acao;
 	
-	
-	public boolean isAcao() {
-		return acao;
-	}
-	public void setAcao(boolean acao) {
-		this.acao = acao;
-	}
 	public long getExposicao_id() {
 		return exposicao_id;
 	}
@@ -25,4 +17,6 @@ public class ExposicaoListaAlteracaoEntity {
 		this.obra_id = obra_id;
 	}
 	
+	
+
 }

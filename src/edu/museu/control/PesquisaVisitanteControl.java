@@ -7,7 +7,7 @@ import javax.swing.event.TableModelListener;
 import edu.museu.entity.Visitante;
 import edu.museu.infrastructure.VisitanteDAO;
 
-public class PesquisaVisitanteControl implements PesquisaControler {
+public class PesquisaVisitanteControl implements PesquisaControl {
 	private List<Visitante> lista = new VisitanteDAO().selectAll();
 	
 	@Override

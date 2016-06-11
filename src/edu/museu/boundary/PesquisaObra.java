@@ -10,7 +10,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import edu.museu.control.Observer;
-import edu.museu.control.PesquisaControler;
+import edu.museu.control.PesquisaControl;
 import edu.museu.control.PesquisaObraControl;
 import edu.museu.entity.Exposicao;
 import edu.museu.entity.Local;
@@ -18,7 +18,7 @@ import edu.museu.entity.Obra;
 import edu.museu.entity.Visitante;
 
 public class PesquisaObra extends FormPesquisa{
-	private PesquisaControler control = new PesquisaObraControl();
+	private PesquisaControl control = new PesquisaObraControl();
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {

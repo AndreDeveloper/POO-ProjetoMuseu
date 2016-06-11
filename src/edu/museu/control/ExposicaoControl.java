@@ -9,83 +9,149 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
 import edu.museu.entity.Exposicao;
-import edu.museu.entity.IntermediarioExposicaoEntity;
+import edu.museu.entity.ObraExposicaoAlteracao;
+import edu.museu.entity.ObraExposicao;
 import edu.museu.entity.Obra;
 import edu.museu.infrastructure.ExposicaoDAO;
-import edu.museu.infrastructure.IntermediarioExposicaoDAO;
+import edu.museu.infrastructure.ObraExposicaoDAO;
 import edu.museu.infrastructure.ObraDAO;
 
-public class ExposicaoControl implements TableModel{
+public class ExposicaoControl implements TableModel {
 	private List<Obra> listaExposicao = new ArrayList<Obra>();
-	
-	public void salvar(Exposicao exposicao, List<Obra> lista){
+
+	public void salvar(Exposicao exposicao, List<Obra> lista) {
 		ExposicaoDAO dao = new ExposicaoDAO();
-		IntermediarioExposicaoDAO intDAO = new IntermediarioExposicaoDAO();
-		List<IntermediarioExposicaoEntity> listaIntObra = new ArrayList<IntermediarioExposicaoEntity>();
+		ObraExposicaoDAO intDAO = new ObraExposicaoDAO();
+		List<ObraExposicao> listaIntObra = new ArrayList<ObraExposicao>();
 		long idGerado;
 		long qtdadeObras;
 		try {
 			idGerado = dao.insert(exposicao);
-			for(Obra o : lista){
-				IntermediarioExposicaoEntity e = new IntermediarioExposicaoEntity();
+			for (Obra o : lista) {
+				ObraExposicao e = new ObraExposicao();
 				e.setExposicao_id(idGerado);
 				e.setObra_id(o.getId());
 				listaIntObra.add(e);
 			}
 			qtdadeObras = intDAO.insert(listaIntObra);
-			JOptionPane.showMessageDialog(null, "Exposição cadastrada com sucesso!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Exposição cadastrada com sucesso!", "Aviso",
+					JOptionPane.INFORMATION_MESSAGE);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	public void pesquisaObras(long id){
-		IntermediarioExposicaoDAO dao = new IntermediarioExposicaoDAO();
-		List<IntermediarioExposicaoEntity> lista= dao.selectById(id);
+
+	public void alterar(Exposicao exposicao, List<Obra> lista) throws SQLException {
+		List<ObraExposicao> listaBanco = new ObraExposicaoDAO().selectById(exposicao.getId());
+		List<ObraExposicaoAlteracao> listaAlteracao = new ArrayList<ObraExposicaoAlteracao>();
+		List<ObraExposicao> listaTabela = new ArrayList<ObraExposicao>();
+		ObraExposicaoDAO intDAO = new ObraExposicaoDAO();
+		ExposicaoDAO dao = new ExposicaoDAO();
+		for (Obra obra : lista) {
+			ObraExposicao entity = new ObraExposicao();
+			entity.setExposicao_id(exposicao.getId());
+			entity.setObra_id(obra.getId());
+			listaTabela.add(entity);
+		}
+
+		for (ObraExposicao i : listaTabela) {
+			boolean thereIs = false;
+			for (ObraExposicao x : listaBanco) {
+				if (i.getExposicao_id() == x.getExposicao_id() && i.getObra_id() == x.getObra_id()) {
+					thereIs = true;
+				}
+			}
+			if (!thereIs) {
+				ObraExposicaoAlteracao entity = new ObraExposicaoAlteracao();
+				entity.setExposicao_id(exposicao.getId());
+				entity.setObra_id(i.getObra_id());
+				entity.setAcao(true);
+				listaAlteracao.add(entity);
+			}
+		}
+
+		for (ObraExposicao i : listaBanco) {
+			boolean thereIs = false;
+			for (ObraExposicao y : listaTabela) {
+				if (i.getExposicao_id() == y.getExposicao_id() && i.getObra_id() == y.getObra_id()) {
+					thereIs = true;
+				}
+			}
+			if (!thereIs) {
+				ObraExposicaoAlteracao entity = new ObraExposicaoAlteracao();
+				entity.setExposicao_id(exposicao.getId());
+				entity.setObra_id(i.getObra_id());
+				entity.setAcao(false);
+				listaAlteracao.add(entity);
+			}
+		}
+
+		dao.update(exposicao);
+
+		for (ObraExposicaoAlteracao entity : listaAlteracao) {
+			if (entity.isAcao()) {
+				intDAO.insertByRow(entity);
+			} else {
+				intDAO.deleteByRow(entity.getExposicao_id(), entity.getObra_id());
+			}
+		}
+		JOptionPane.showMessageDialog(null, "Exposição alterada com sucesso!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+	}
+	public void deletar(Exposicao exposicao){
+		new ObraExposicaoDAO().delete(exposicao.getId());
+		new ExposicaoDAO().delete(exposicao.getId());
+		JOptionPane.showMessageDialog(null, "Exposição Excluida com sucesso!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+	}
+	public void pesquisaObras(long id) {
+		ObraExposicaoDAO dao = new ObraExposicaoDAO();
+		List<ObraExposicao> lista = dao.selectById(id);
 		List<Obra> listaObra = new ArrayList<Obra>();
 		ObraDAO obraDAO = new ObraDAO();
-		for(IntermediarioExposicaoEntity ie: lista){
+		for (ObraExposicao ie : lista) {
 			listaObra.add(obraDAO.selectById(ie.getObra_id()));
 		}
 		this.setListaExposicao(listaObra);
 	}
-	
+
 	public List<Obra> getListaExposicao() {
 		return listaExposicao;
 	}
+
 	public void setListaExposicao(List<Obra> listaExposicao) {
 		this.listaExposicao = listaExposicao;
 	}
-	
-	public void add(Obra obra){
+
+	public void add(Obra obra) {
 		boolean valida = true;
-		for(Obra o: listaExposicao){
-			if(o.getId()==obra.getId()){
-				valida=false;
+		for (Obra o : listaExposicao) {
+			if (o.getId() == obra.getId()) {
+				valida = false;
 			}
 		}
-		if(valida){
-		listaExposicao.add(obra);
-		}else{
+		if (valida) {
+			listaExposicao.add(obra);
+		} else {
 			JOptionPane.showMessageDialog(null, "essa obra já foi adicionada!", "erro", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-	public void remove(Obra obra){
+
+	public void remove(Obra obra) {
 		boolean valida = false;
-		for(Obra o: listaExposicao){
-			if(o.getId()==obra.getId()){
-				valida=true;
+		for (Obra o : listaExposicao) {
+			if (o.getId() == obra.getId()) {
+				valida = true;
 			}
 		}
-		if(valida){
-		listaExposicao.remove(obra);
+		if (valida) {
+			listaExposicao.remove(obra);
 		}
 	}
 
 	@Override
 	public void addTableModelListener(TableModelListener l) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -160,13 +226,13 @@ public class ExposicaoControl implements TableModel{
 	@Override
 	public void removeTableModelListener(TableModelListener l) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 }

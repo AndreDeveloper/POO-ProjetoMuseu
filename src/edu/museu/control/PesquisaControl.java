@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.swing.table.TableModel;
 
-public interface PesquisaControler extends TableModel{
+public interface PesquisaControl extends TableModel{
 	public List preencheLista();
 	public List preencheLista(String value);
 	public List getLista();
