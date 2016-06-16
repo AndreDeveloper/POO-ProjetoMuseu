@@ -36,6 +36,7 @@ public class TelaPrincipalBoundary implements ActionListener {
 	private LocaisBoundary locaisForm = new LocaisBoundary();
 	private EmprestimoBoundary emprestimoForm = new EmprestimoBoundary();
 	private ExposicaoBoundary exposicaoForm = new ExposicaoBoundary();
+	private IngressoBoundary ingressoForm = new IngressoBoundary();
 
 	public TelaPrincipalBoundary() {
 
@@ -127,6 +128,9 @@ public class TelaPrincipalBoundary implements ActionListener {
 			exposicaoForm.getPainelPrincipal().invalidate();
 			exposicaoForm.getPainelPrincipal().revalidate();
 			selectTela(exposicaoForm.getPainelPrincipal());
+		} else if (arg0.getSource() == btnVenda) {
+			ingressoForm.atualiza();
+			selectTela(ingressoForm.getPainelPrincipal());
 		}
 
 	}

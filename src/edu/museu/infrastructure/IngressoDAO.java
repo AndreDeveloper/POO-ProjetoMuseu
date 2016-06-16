@@ -7,15 +7,15 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.museu.entity.VendaIngressos;
+import edu.museu.entity.Ingresso;
 
-public class VendaIngressosDAO {
+public class IngressoDAO {
 	
-	public List<VendaIngressos> selectAll;
+	public List<Ingresso> selectAll;
 	
 	
 	
-	public long insert (VendaIngressos ingresso)
+	public long insert (Ingresso ingresso)
 	{
 		long idGerado= 0;
 		try
@@ -23,16 +23,26 @@ public class VendaIngressosDAO {
 
 			Connection con = JDBCUtil.getConnection();
 
-			String query = "INSERT INTO `ingresso` (`ingresso_obra_nome`, `ingresso_obra_valor`, `ingresso_pagar_valor`, `ingresso_meiaentrada`, `ingresso_gratuito`) VALUES (?, ?, ?, ?,?);";
+			String query = 
+					"INSERT INTO `ingresso` "
+					+ "(`ingresso_exposicao_nome`,"
+					+ " `ingresso_exposicao_valor`,"
+					+ " `ingresso_pagar_valor`,"
+					+ " `ingresso_desconto`,"
+					+ " `ingresso_meiaentrada`,"
+					+ " `ingresso_gratuito`, "
+					+ " `quantidade`) "
+					+ "VALUES (?, ?, ?, ?,?,?,?);";
 
 			PreparedStatement stmt = con.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
 
-			stmt.setString(1, ingresso.getNomeObra());
-			stmt.setDouble(2, ingresso.getValorObra());
+			stmt.setString(1, ingresso.getNome());
+			stmt.setDouble(2, ingresso.getValor());
 			stmt.setDouble(3, ingresso.getValorPagar());
 			stmt.setDouble(4, ingresso.getDesconto());
 			stmt.setBoolean(5, ingresso.isMeiaEntrada());
 			stmt.setBoolean(6, ingresso.isGratuito());
+			stmt.setInt(7, ingresso.getQtdade());
 
 			
 			stmt.executeUpdate();
@@ -50,7 +60,7 @@ public class VendaIngressosDAO {
 		return idGerado;
 		
 	}
-	public int update(VendaIngressos ingresso) {
+	public int update(Ingresso ingresso) {
 		
 		int affectedRows = 0;
 		try {
@@ -60,8 +70,8 @@ public class VendaIngressosDAO {
 			String query = "UPDATE `ingresso` SET `ingresso_obra_nome`=?, `ingresso_obra_valor`=?, `ingresso_pagar_valor`=?, `ingresso_meiaentrada`=?; `ingresso_gratuito`, WHERE `ingresso_id`=?";
 			
 			PreparedStatement stmt = con.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
-			stmt.setString(1, ingresso.getNomeObra());
-			stmt.setDouble(2, ingresso.getValorObra());
+			stmt.setString(1, ingresso.getNome());
+			stmt.setDouble(2, ingresso.getValor());
 			stmt.setDouble(3, ingresso.getValorPagar());
 			stmt.setDouble(4, ingresso.getDesconto());
 			stmt.setBoolean(5, ingresso.isMeiaEntrada());

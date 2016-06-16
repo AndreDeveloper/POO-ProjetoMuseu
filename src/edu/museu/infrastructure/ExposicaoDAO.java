@@ -176,5 +176,33 @@ public class ExposicaoDAO {
 		return exposicoes;
 	}
 	
+	public List<Exposicao> selectAllToBuy() {
+		List<Exposicao> exposicoes = new ArrayList<Exposicao>();
+		try {
+			Connection con = JDBCUtil.getConnection();
+			
+			String query = "SELECT * FROM exposicao WHERE `exposicao_dataFim` > ?";
+			PreparedStatement stmt = con.prepareStatement(query);			
+			
+			stmt.setDate(1, new Date(new java.util.Date().getTime()));
+			
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				Exposicao exposicao = new Exposicao();
+				exposicao.setId(rs.getInt("exposicao_id"));
+				exposicao.setNome(rs.getString("exposicao_nome"));
+				exposicao.setValor(rs.getDouble("exposicao_valor"));
+				exposicao.setDataInicio(rs.getDate("exposicao_dataInicio"));
+				exposicao.setDataFim(rs.getDate("exposicao_dataFim"));
+				
+				exposicoes.add(exposicao);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return exposicoes;
+	}
+	
 	
 }

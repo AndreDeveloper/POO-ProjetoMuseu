@@ -196,3 +196,651 @@ Path = C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\resource
 Sub-pastas do projeto = 78 pastas
 Classes do projeto = 34 classes
 Linhas de codigo do projeto = 5427 linhas
+
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\branches
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\hooks
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\logs
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\logs\refs
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\logs\refs\heads
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\logs\refs\remotes
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\logs\refs\remotes\origin
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\00
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\01
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\03
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\06
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\08
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\0b
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\0f
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\12
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\13
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\16
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\1a
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\24
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\25
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\27
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\2a
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\2d
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\34
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\35
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\3c
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\3d
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\3e
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\3f
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\43
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\45
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\47
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\4a
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\4c
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\4d
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\4f
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\50
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\51
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\52
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\58
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\5c
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\5e
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\61
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\65
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\6b
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\6c
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\6f
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\72
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\73
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\75
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\7d
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\7f
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\80
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\83
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\84
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\86
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\8a
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\8e
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\90
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\91
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\92
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\93
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\95
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\9a
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\9e
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\9f
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\a0
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\a2
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\a4
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\a5
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\a8
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\ab
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\ae
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\b1
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\b2
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\b7
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\b9
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\ba
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\bb
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\bc
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\c0
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\c5
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\c6
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\c7
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\c9
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\cb
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\cd
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\d4
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\d5
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\d6
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\d8
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\d9
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\da
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\de
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\e1
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\e2
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\e7
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\e8
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\e9
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\ea
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\ec
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\ee
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\f0
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\f1
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\f2
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\f7
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\f8
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\fa
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\fd
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\ff
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\info
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\pack
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\refs
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\refs\heads
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\refs\remotes
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\refs\remotes\origin
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\refs\tags
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.settings
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\bin
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\bin\edu
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\bin\edu\museu
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\bin\edu\museu\boundary
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\bin\edu\museu\control
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\bin\edu\museu\entity
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\bin\edu\museu\infrastructure
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\bin\edu\museu\resource
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\src
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\src\edu
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\boundary
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\boundary\EmprestimoBoundary.java = 387 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\boundary\ExposicaoBoundary.java = 326 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\boundary\FormPesquisa.java = 123 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\boundary\LocaisBoundary.java = 418 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\boundary\ObraBoundary.java = 339 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\boundary\PesquisaExposicao.java = 74 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\boundary\PesquisaLocais.java = 73 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\boundary\PesquisaObra.java = 83 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\boundary\PesquisaVisitante.java = 74 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\boundary\TelaPrincipalBoundary.java = 134 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\boundary\VisitanteBoundary.java = 394 linhas
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control\AuxiliarPesquisaControl.java = 196 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control\ComponenteFormater.java = 109 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control\EmprestimoControl.java = 140 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control\ExposicaoControl.java = 238 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control\ImagemFormater.java = 94 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control\LocalControl.java = 33 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control\ObraControl.java = 68 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control\ObrasToExposicao.java = 116 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control\Observer.java = 11 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control\PesquisaControl.java = 13 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control\PesquisaExposicaoControl.java = 108 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control\PesquisaLocaisControl.java = 107 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control\PesquisaObraControl.java = 126 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control\PesquisaVisitanteControl.java = 106 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control\Subject.java = 12 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control\VisitanteControl.java = 20 linhas
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\entity
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\entity\Emprestimo.java = 140 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\entity\Exposicao.java = 45 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\entity\Local.java = 135 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\entity\Obra.java = 88 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\entity\ObraExposicao.java = 22 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\entity\ObraExposicaoAlteracao.java = 28 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\entity\VendaIngressos.java = 118 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\entity\Visitante.java = 72 linhas
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\infrastructure
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\infrastructure\EmprestimoDAO.java = 262 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\infrastructure\ExposicaoDAO.java = 180 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\infrastructure\JDBCUtil.java = 39 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\infrastructure\LocalDAO.java = 214 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\infrastructure\ObraDAO.java = 336 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\infrastructure\ObraExposicaoDAO.java = 172 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\infrastructure\VendaIngressosDAO.java = 81 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\infrastructure\VisitanteDAO.java = 204 linhas
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\resource
+
+
+
+=============================================
+Sub-pastas do projeto = 136 pastas
+Classes do projeto = 43 classes
+Linhas de codigo do projeto = 6058 linhas
+
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\branches
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\hooks
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\logs
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\logs\refs
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\logs\refs\heads
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\logs\refs\remotes
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\logs\refs\remotes\origin
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\00
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\01
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\03
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\06
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\08
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\0b
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\0f
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\12
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\13
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\16
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\1a
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\24
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\25
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\27
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\2a
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\2d
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\34
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\35
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\3c
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\3d
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\3e
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\3f
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\43
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\45
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\47
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\4a
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\4c
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\4d
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\4f
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\50
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\51
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\52
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\58
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\5c
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\5e
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\61
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\65
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\6b
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\6c
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\6f
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\72
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\73
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\75
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\7d
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\7f
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\80
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\83
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\84
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\86
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\8a
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\8e
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\90
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\91
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\92
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\93
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\95
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\9a
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\9e
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\9f
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\a0
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\a2
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\a4
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\a5
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\a8
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\ab
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\ae
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\b1
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\b2
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\b7
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\b9
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\ba
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\bb
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\bc
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\c0
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\c5
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\c6
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\c7
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\c9
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\cb
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\cd
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\d4
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\d5
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\d6
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\d8
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\d9
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\da
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\de
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\e1
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\e2
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\e7
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\e8
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\e9
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\ea
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\ec
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\ee
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\f0
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\f1
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\f2
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\f7
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\f8
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\fa
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\fd
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\ff
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\info
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\objects\pack
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\refs
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\refs\heads
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\refs\remotes
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\refs\remotes\origin
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.git\refs\tags
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\.settings
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\bin
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\bin\edu
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\bin\edu\museu
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\bin\edu\museu\boundary
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\bin\edu\museu\control
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\bin\edu\museu\entity
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\bin\edu\museu\infrastructure
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\bin\edu\museu\resource
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\src
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\src\edu
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\boundary
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\boundary\EmprestimoBoundary.java = 387 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\boundary\ExposicaoBoundary.java = 326 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\boundary\FormPesquisa.java = 123 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\boundary\IngressoBoundary.java = 299 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\boundary\LocaisBoundary.java = 418 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\boundary\ObraBoundary.java = 339 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\boundary\PesquisaExposicao.java = 74 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\boundary\PesquisaLocais.java = 73 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\boundary\PesquisaObra.java = 83 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\boundary\PesquisaVisitante.java = 74 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\boundary\TelaPrincipalBoundary.java = 138 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\boundary\VisitanteBoundary.java = 394 linhas
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control\AuxiliarPesquisaControl.java = 196 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control\ComponenteFormater.java = 109 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control\EmprestimoControl.java = 140 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control\ExposicaoControl.java = 238 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control\ImagemFormater.java = 94 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control\IngressoControl.java = 107 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control\LocalControl.java = 33 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control\ObraControl.java = 68 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control\ObrasToExposicao.java = 116 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control\Observer.java = 11 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control\PesquisaControl.java = 13 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control\PesquisaExposicaoControl.java = 108 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control\PesquisaLocaisControl.java = 107 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control\PesquisaObraControl.java = 126 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control\PesquisaVisitanteControl.java = 106 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control\Subject.java = 12 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\control\VisitanteControl.java = 20 linhas
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\entity
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\entity\Emprestimo.java = 140 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\entity\Exposicao.java = 45 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\entity\Ingresso.java = 64 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\entity\Local.java = 135 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\entity\Obra.java = 88 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\entity\ObraExposicao.java = 22 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\entity\ObraExposicaoAlteracao.java = 28 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\entity\Visitante.java = 72 linhas
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\infrastructure
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\infrastructure\EmprestimoDAO.java = 262 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\infrastructure\ExposicaoDAO.java = 208 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\infrastructure\IngressoDAO.java = 91 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\infrastructure\JDBCUtil.java = 39 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\infrastructure\LocalDAO.java = 214 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\infrastructure\ObraDAO.java = 336 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\infrastructure\ObraExposicaoDAO.java = 172 linhas
+	 C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\infrastructure\VisitanteDAO.java = 204 linhas
+
+Path = C:\Users\André\workspace\POO-ProjetoMuseu\src\edu\museu\resource
+
+
+
+=============================================
+Sub-pastas do projeto = 136 pastas
+Classes do projeto = 45 classes
+Linhas de codigo do projeto = 6452 linhas

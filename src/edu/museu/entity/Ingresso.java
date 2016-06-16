@@ -1,118 +1,64 @@
 package edu.museu.entity;
 
-public class VendaIngressos {
+public class Ingresso {
 	private long ingressoId;
-	private String NomeObra;
-	private double ValorObra;
+	private String nome;
+	private double valor;
 	private double ValorPagar;
 	private double Desconto;
 	private boolean MeiaEntrada;
 	private boolean gratuito;
-	
-
-
-
+	private int qtdade;
 	public long getIngressoId() {
 		return ingressoId;
 	}
-
-
-
-
 	public void setIngressoId(long ingressoId) {
 		this.ingressoId = ingressoId;
 	}
-
-
-
-
-	public String getNomeObra() {
-		return NomeObra;
+	public String getNome() {
+		return nome;
 	}
-
-
-
-
-	public void setNomeObra(String nomeObra) {
-		NomeObra = nomeObra;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
-
-
-
-
-	public double getValorObra() {
-		return ValorObra;
+	public double getValor() {
+		return valor;
 	}
-
-
-
-
-	public void setValorObra(double valorObra) {
-		ValorObra = valorObra;
+	public void setValor(double valor) {
+		this.valor = valor;
 	}
-
-
-
-
 	public double getValorPagar() {
 		return ValorPagar;
 	}
-
-
-
-
 	public void setValorPagar(double valorPagar) {
 		ValorPagar = valorPagar;
 	}
-
-
-
-
 	public double getDesconto() {
 		return Desconto;
 	}
-
-
-
-
 	public void setDesconto(double desconto) {
 		Desconto = desconto;
 	}
-
-
-
-
 	public boolean isMeiaEntrada() {
 		return MeiaEntrada;
 	}
-
-
-
-
 	public void setMeiaEntrada(boolean meiaEntrada) {
 		MeiaEntrada = meiaEntrada;
 	}
-
-
-
-
 	public boolean isGratuito() {
 		return gratuito;
 	}
-
-
-
-
 	public void setGratuito(boolean gratuito) {
 		this.gratuito = gratuito;
 	}
-
-
-
-
-	public VendaIngressos()
-	{
-		
+	public int getQtdade() {
+		return qtdade;
 	}
+	public void setQtdade(int qtdade) {
+		this.qtdade = qtdade;
+	}
+	
+	
+
 	
 }

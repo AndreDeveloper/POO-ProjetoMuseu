@@ -236,7 +236,7 @@ public class VisitanteBoundary implements ActionListener, Observer, KeyListener 
 	public Visitante formToVisitante() {
 		if (validaCampos()) {
 			visitante.setCpf(txtCPF.getText());
-			visitante.setId(Long.parseLong(txtIdade.getText()));
+			visitante.setIdade(Integer.parseInt(txtIdade.getText()));
 			visitante.setGrauInstrucao(cbInstrucao.getSelectedItem().toString());
 			visitante.setMeioTransporte(cbTransporte.getSelectedItem().toString());
 			visitante.setNacionalidade(getNacionalidade());
