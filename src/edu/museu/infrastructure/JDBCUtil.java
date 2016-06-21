@@ -7,30 +7,47 @@ import java.sql.SQLException;
 
 public class JDBCUtil {
 
-	private static String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	private static String JDBC_URL = "jdbc:mysql://localhost/asgardprint01";
-	private static String JDBC_USER = "root";
-	private static String JDBC_PASSWORD = "sql1234";
-	private static Driver driver = null;
+	private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+	private static final String JDBC_URL = "jdbc:mysql://localhost/asgardprint01";
+	private static final String JDBC_USER = "root";
+	private static final String JDBC_PASSWORD = "sql1234";
+	private static JDBCUtil instancia;
+	private Connection con;
 
-	public static synchronized Connection getConnection() throws SQLException {
-		if (driver == null) {
+	public JDBCUtil() {
+		try {
+			Class.forName(JDBC_DRIVER);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public static JDBCUtil getInstancia() {
+		if (instancia == null) {
+			instancia = new JDBCUtil();
+		}
+		return instancia;
+	}
+
+	public Connection getConnection() {
+		if (con == null) {
 			try {
-				Class jdbcDriverClass = Class.forName(JDBC_DRIVER);
-				driver = (Driver) jdbcDriverClass.newInstance();
-				DriverManager.registerDriver(driver);
-			} catch (Exception e) {
-				System.out.println("Failed to initialise JDBC driver");
+				con = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		return DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD);
+		return con;
 	}
 
-	public static void close(Connection conn) {
+	public void close() {
 		try {
-			if (conn != null)
-				conn.close();
+			if (con != null) {
+				con.close();
+			}
+			con = null;
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 		}

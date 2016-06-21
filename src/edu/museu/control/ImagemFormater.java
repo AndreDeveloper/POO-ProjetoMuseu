@@ -1,11 +1,9 @@
 package edu.museu.control;
 
-import java.awt.FlowLayout;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
-import java.awt.image.RenderedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -13,10 +11,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 public class ImagemFormater {
 
@@ -71,6 +66,21 @@ public class ImagemFormater {
 		}
 		 
         return new ImageIcon(aux);
+	}
+	public static ImageIcon bytesParaImagem(byte[] bytes, int x, int y) throws java.lang.ClassCastException {
+		BufferedImage img;
+		BufferedImage aux;
+		try {
+			img = ImageIO.read(new ByteArrayInputStream(bytes));
+			aux = new BufferedImage(x, y, img.getType());//cria um buffer auxiliar com o tamanho desejado  
+			Graphics2D g = aux.createGraphics();//pega a classe graphics do aux para edicao  
+			AffineTransform at = AffineTransform.getScaleInstance((double) x / img.getWidth(), (double) y / img.getHeight());//cria a transformacao  
+			g.drawRenderedImage(img, at);//pinta e transforma a imagem real no auxiliar 
+		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "erro: " + e.getMessage());
+			return null;
+		}
+		return new ImageIcon(aux);
 	}
 	
 	public static BufferedImage toBufferedImage(Image img)

@@ -18,7 +18,7 @@ public class ObraExposicaoDAO {
 		long idGerado = 0;
 		try {
 
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "INSERT INTO `asgardprint01`.`Intermediaria_exposicao`"
 					+ " (`exposicao_id`, `obra_id`) "
@@ -39,7 +39,7 @@ public class ObraExposicaoDAO {
 				//idGerado = r.getLong(1);
 			}
 
-			JDBCUtil.close(con);
+			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -50,7 +50,7 @@ public class ObraExposicaoDAO {
 		long idGerado = 0;
 		try {
 
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "INSERT INTO `asgardprint01`.`Intermediaria_exposicao`"
 					+ " (`exposicao_id`, `obra_id`) "
@@ -67,7 +67,7 @@ public class ObraExposicaoDAO {
 				r.next();
 				//idGerado = r.getLong(1);			
 
-			JDBCUtil.close(con);
+				JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -78,7 +78,7 @@ public class ObraExposicaoDAO {
 		List<ObraExposicao> lista = 
 				new ArrayList<ObraExposicao>();
 		try {
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "SELECT * FROM Intermediaria_exposicao" + 
 					" WHERE exposicao_id = ?";
@@ -94,6 +94,7 @@ public class ObraExposicaoDAO {
 				
 				lista.add(entity);
 			}
+			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -105,7 +106,7 @@ public class ObraExposicaoDAO {
 		int affectedRows = 0;
 		try {
 
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "DELETE FROM `Intermediaria_exposicao` WHERE `exposicao_id`=?;";
 
@@ -115,7 +116,7 @@ public class ObraExposicaoDAO {
 
 			affectedRows = stmt.executeUpdate();
 
-			JDBCUtil.close(con);
+			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -127,7 +128,7 @@ public class ObraExposicaoDAO {
 		int affectedRows = 0;
 		try {
 
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "DELETE FROM `Intermediaria_exposicao` WHERE `exposicao_id`=? AND `obra_id`=?;";
 
@@ -138,7 +139,7 @@ public class ObraExposicaoDAO {
 
 			affectedRows = stmt.executeUpdate();
 
-			JDBCUtil.close(con);
+			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -149,7 +150,7 @@ public class ObraExposicaoDAO {
 		int affectedRows = 0;
 		try {
 			
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 			
 			String query = "DELETE FROM `Intermediaria_exposicao` WHERE `obra_id`=?;";
 			
@@ -159,7 +160,7 @@ public class ObraExposicaoDAO {
 			
 			affectedRows = stmt.executeUpdate();
 			
-			JDBCUtil.close(con);
+			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

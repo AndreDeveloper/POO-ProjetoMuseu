@@ -14,7 +14,7 @@ public class LocalDAO {
 		long idGerado = 0;
 		try {
 
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "INSERT INTO `local_emprestimo` (`local_emprestimo_nome`, `local_emprestimo_email`, `local_emprestimo_telefone`, `local_emprestimo_responsavel`, `local_emprestimo_cep`, `local_emprestimo_tipo_logradouro`, `local_emprestimo_logradouro`, `local_emprestimo_numero`, `local_emprestimo_complemento`, `local_emprestimo_bairro`, `local_emprestimo_cidade`, `local_emprestimo_uf`, `local_emprestimo_ativo`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
@@ -40,7 +40,7 @@ public class LocalDAO {
 			r.next();
 			idGerado = r.getLong(1);
 
-			JDBCUtil.close(con);
+			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -52,7 +52,7 @@ public class LocalDAO {
 		int affectedRows = 0;
 		try {
 
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "UPDATE `local_emprestimo` SET `local_emprestimo_nome`=?, `local_emprestimo_email`=?, `local_emprestimo_telefone`=?, `local_emprestimo_responsavel`=?, `local_emprestimo_cep`=?, `local_emprestimo_tipo_logradouro`=?, `local_emprestimo_logradouro`=?, `local_emprestimo_numero`=?, `local_emprestimo_complemento`=?, `local_emprestimo_bairro`=?, `local_emprestimo_cidade`=?, `local_emprestimo_uf`=?, `local_emprestimo_ativo`=? WHERE `local_emprestimo_id`=?;";
 
@@ -75,7 +75,7 @@ public class LocalDAO {
 
 			affectedRows = stmt.executeUpdate();
 
-			JDBCUtil.close(con);
+			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -87,7 +87,7 @@ public class LocalDAO {
 		int affectedRows = 0;
 		try {
 
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "DELETE FROM `local_emprestimo` WHERE `local_emprestimo_id`=?;";
 
@@ -97,7 +97,7 @@ public class LocalDAO {
 
 			affectedRows = stmt.executeUpdate();
 
-			JDBCUtil.close(con);
+			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -108,7 +108,7 @@ public class LocalDAO {
 	public Local selectById(long id) {
 		Local local = new Local();
 		try {
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "SELECT * FROM local_emprestimo WHERE local_emprestimo_id = ?";
 			PreparedStatement stmt = con.prepareStatement(query);
@@ -133,6 +133,7 @@ public class LocalDAO {
 				local.setAtivo(rs.getBoolean("local_emprestimo_ativo"));
 
 			}
+			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -143,7 +144,7 @@ public class LocalDAO {
 	public List<Local> selectByName(String name) {
 		List<Local> locais = new ArrayList<Local>();
 		try {
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "SELECT * FROM local_emprestimo WHERE local_emprestimo_nome LIKE ?;";
 			PreparedStatement stmt = con.prepareStatement(query);
@@ -170,6 +171,7 @@ public class LocalDAO {
 
 				locais.add(local);
 			}
+			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -180,7 +182,7 @@ public class LocalDAO {
 	public List<Local> selectAll() {
 		List<Local> locais = new ArrayList<Local>();
 		try {
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "SELECT * FROM local_emprestimo";
 			PreparedStatement stmt = con.prepareStatement(query);
@@ -205,6 +207,7 @@ public class LocalDAO {
 
 				locais.add(local);
 			}
+			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

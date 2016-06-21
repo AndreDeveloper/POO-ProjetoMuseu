@@ -14,7 +14,7 @@ public class VisitanteDAO {
 		int idadeGerado = 0;
 		try {
 
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "INSERT INTO `visitante` (`visitante_cpf`, `visitante_nacionalidade`, `visitante_idade`, `visitante_sexo`, `visitante_grau_instrucao`, `visitante_meio_transporte`) VALUES (?, ?, ?, ?, ?, ?);";
 
@@ -34,7 +34,7 @@ public class VisitanteDAO {
 			r.next();
 			idadeGerado = r.getInt(1);
 
-			JDBCUtil.close(con);
+			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -46,7 +46,7 @@ public class VisitanteDAO {
 		int affectedRows = 0;
 		try {
 
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "UPDATE `visitante` SET `visitante_cpf`=?, `visitante_nacionalidade`=?, `visitante_idade`=?, `visitante_sexo`=?, `visitante_grau_instrucao`=?, `visitante_meio_transporte`=?  WHERE  `visitante_id`=?;";
 
@@ -63,7 +63,7 @@ public class VisitanteDAO {
 
 			affectedRows = stmt.executeUpdate();
 
-			JDBCUtil.close(con);
+			JDBCUtil.getInstancia().close();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -76,7 +76,7 @@ public class VisitanteDAO {
 		int affectedRows = 0;
 		try {
 
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "DELETE FROM visitante WHERE visitante_id = ?";
 
@@ -86,7 +86,7 @@ public class VisitanteDAO {
 
 			affectedRows = stmt.executeUpdate();
 
-			JDBCUtil.close(con);
+			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -98,7 +98,7 @@ public class VisitanteDAO {
 		int affectedRows = 0;
 		try {
 
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "DELETE FROM visitante WHERE visitante_cpf = ?";
 
@@ -108,7 +108,7 @@ public class VisitanteDAO {
 
 			affectedRows = stmt.executeUpdate();
 
-			JDBCUtil.close(con);
+			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -119,7 +119,7 @@ public class VisitanteDAO {
 	public Visitante selectById(int id) {
 		Visitante visitante = new Visitante();
 		try {
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "SELECT * FROM visitante WHERE visitante_id = ?";
 			PreparedStatement stmt = con.prepareStatement(query);
@@ -136,6 +136,7 @@ public class VisitanteDAO {
 				visitante.setGrauInstrucao(rs.getString("visitante_grau_instrucao"));
 				visitante.setMeioTransporte(rs.getString("visitante_meio_transporte"));
 			}
+			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -146,7 +147,7 @@ public class VisitanteDAO {
 	public List<Visitante> selectByCpf(String cpf) {
 		List<Visitante> visitantes = new ArrayList<Visitante>();
 		try {
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "SELECT * FROM visitante WHERE visitante_cpf LIKE ?;";
 			PreparedStatement stmt = con.prepareStatement(query);
@@ -166,6 +167,7 @@ public class VisitanteDAO {
 
 				visitantes.add(visitante);
 			}
+			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -176,7 +178,7 @@ public class VisitanteDAO {
 	public List<Visitante> selectAll() {
 		List<Visitante> visitantes = new ArrayList<Visitante>();
 		try {
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "SELECT * FROM visitante";
 			PreparedStatement stmt = con.prepareStatement(query);
@@ -194,6 +196,7 @@ public class VisitanteDAO {
 
 				visitantes.add(visitante);
 			}
+			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

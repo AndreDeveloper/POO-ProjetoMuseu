@@ -21,7 +21,7 @@ public class IngressoDAO {
 		try
 		{
 
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = 
 					"INSERT INTO `ingresso` "
@@ -51,7 +51,7 @@ public class IngressoDAO {
 			r.next();
 			idGerado = r.getLong(1);
 
-			JDBCUtil.close(con);
+			JDBCUtil.getInstancia().close();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -65,7 +65,7 @@ public class IngressoDAO {
 		int affectedRows = 0;
 		try {
 
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 			
 			String query = "UPDATE `ingresso` SET `ingresso_obra_nome`=?, `ingresso_obra_valor`=?, `ingresso_pagar_valor`=?, `ingresso_meiaentrada`=?; `ingresso_gratuito`, WHERE `ingresso_id`=?";
 			
@@ -80,7 +80,7 @@ public class IngressoDAO {
 			stmt.setLong(7, ingresso.getIngressoId());
 			affectedRows = stmt.executeUpdate();
 
-			JDBCUtil.close(con);
+			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

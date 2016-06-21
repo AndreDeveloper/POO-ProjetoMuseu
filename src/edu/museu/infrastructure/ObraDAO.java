@@ -18,7 +18,7 @@ public class ObraDAO {
 		long idGerado = 0;
 		try {
 
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "INSERT INTO `obra` (`obra_nome`, `obra_autor`, `obra_data`, `obra_biografia`, `obra_tipo`, `obra_categoria`, `obra_localizacao`, `obra_disponibilidade`, `obra_imagem`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
@@ -40,7 +40,7 @@ public class ObraDAO {
 			r.next();
 			idGerado = r.getLong(1);
 
-			JDBCUtil.close(con);
+			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -52,7 +52,7 @@ public class ObraDAO {
 		int affectedRows = 0;
 		try {
 
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "UPDATE `obra` SET `obra_nome`=?,"
 					+ " `obra_autor`=?,  `obra_data`=?,"
@@ -76,7 +76,7 @@ public class ObraDAO {
 
 			affectedRows = stmt.executeUpdate();
 
-			JDBCUtil.close(con);
+			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -87,7 +87,7 @@ public class ObraDAO {
 		int affectedRows = 0;
 		try {
 
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "UPDATE `obra` SET `obra_disponibilidade`=? WHERE  `obra_id`=?;";
 
@@ -99,7 +99,7 @@ public class ObraDAO {
 
 			affectedRows = stmt.executeUpdate();
 
-			JDBCUtil.close(con);
+			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -111,7 +111,7 @@ public class ObraDAO {
 		int affectedRows = 0;
 		try {
 
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "DELETE FROM obra WHERE obra_id = ?;";
 
@@ -121,7 +121,7 @@ public class ObraDAO {
 
 			affectedRows = stmt.executeUpdate();
 
-			JDBCUtil.close(con);
+			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -132,7 +132,7 @@ public class ObraDAO {
 	public Obra selectById(long id) {
 		Obra obra = new Obra();
 		try {
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "SELECT * FROM obra WHERE obra_id = ?;";
 			PreparedStatement stmt = con.prepareStatement(query);
@@ -152,6 +152,7 @@ public class ObraDAO {
 				obra.setDisponivel(rs.getBoolean("obra_disponibilidade"));
 				obra.setImagem(ImagemFormater.bytesParaImagem(rs.getBytes("obra_imagem")));
 			}
+			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -161,7 +162,7 @@ public class ObraDAO {
 	public ImageIcon selectImageById(long id) {
 		ImageIcon imageIcon = new ImageIcon();
 		try {
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "SELECT `obra_imagem` FROM obra WHERE obra_id = ?;";
 			PreparedStatement stmt = con.prepareStatement(query);
@@ -172,6 +173,7 @@ public class ObraDAO {
 			while (rs.next()) {
 				imageIcon = ImagemFormater.bytesParaImagem(rs.getBytes("obra_imagem"));
 			}
+			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -182,7 +184,7 @@ public class ObraDAO {
 	public List<Obra> selectByName(String name) {
 		List<Obra> locais = new ArrayList<Obra>();
 		try {
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "SELECT "
 					+ "`obra_id`,"
@@ -213,6 +215,7 @@ public class ObraDAO {
 				obra.setDisponivel(rs.getBoolean("obra_disponibilidade"));				
 				locais.add(obra);
 			}
+			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -222,7 +225,7 @@ public class ObraDAO {
 	public List<Obra> selectByObrasDisponiveis(String name) {
 		List<Obra> locais = new ArrayList<Obra>();
 		try {
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "SELECT * FROM obra WHERE obra_nome LIKE ? "
 					+ "AND obra_disponibilidade = 1;";
@@ -245,6 +248,7 @@ public class ObraDAO {
 				obra.setImagem(ImagemFormater.bytesParaImagem(rs.getBytes("obra_imagem")));
 				locais.add(obra);
 			}
+			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -255,7 +259,7 @@ public class ObraDAO {
 	public List<Obra> selectByAutor(String name) {
 		List<Obra> locais = new ArrayList<Obra>();
 		try {
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "SELECT "
 					+ "`obra_id`,"
@@ -286,6 +290,7 @@ public class ObraDAO {
 				obra.setDisponivel(rs.getBoolean("obra_disponibilidade"));
 				locais.add(obra);
 			}
+			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -296,7 +301,7 @@ public class ObraDAO {
 	public List<Obra> selectAll() {
 		List<Obra> locais = new ArrayList<Obra>();
 		try {
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "SELECT "
 					+ "`obra_id`,"
@@ -327,10 +332,31 @@ public class ObraDAO {
 
 				locais.add(obra);
 			}
+			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		return locais;
+	}
+	public List<ImageIcon> selectAllImages() {
+		List<ImageIcon> imagens = new ArrayList<ImageIcon>();
+		try {
+			Connection con = JDBCUtil.getInstancia().getConnection();
+			
+			String query = "SELECT "				
+					+ " * FROM obra;";
+			PreparedStatement stmt = con.prepareStatement(query);
+			
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				imagens.add(ImagemFormater.bytesParaImagem(rs.getBytes("obra_imagem"), 200, 200));
+			}
+			JDBCUtil.getInstancia().close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return imagens;
 	}
 }

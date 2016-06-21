@@ -2,9 +2,12 @@ package edu.museu.boundary;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -18,7 +21,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import edu.museu.control.ComponenteFormater;
 
-public class TelaPrincipalBoundary implements ActionListener {
+public class TelaPrincipal implements ActionListener, MouseListener {
 	private JFrame tela = new JFrame("Smart Museu");
 	private JLabel lblLogo = new JLabel();
 	private JButton btnVisitantes = new JButton("Visitantes");
@@ -37,8 +40,10 @@ public class TelaPrincipalBoundary implements ActionListener {
 	private EmprestimoBoundary emprestimoForm = new EmprestimoBoundary();
 	private ExposicaoBoundary exposicaoForm = new ExposicaoBoundary();
 	private IngressoBoundary ingressoForm = new IngressoBoundary();
+	private TelaInicial
+	telaInicial = new TelaInicial();
 
-	public TelaPrincipalBoundary() {
+	public TelaPrincipal() {
 
 		FlowLayout layoutMenu = new FlowLayout(FlowLayout.LEFT, 0, 0);
 		JPanel menuBotoes = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 0));
@@ -52,7 +57,8 @@ public class TelaPrincipalBoundary implements ActionListener {
 		menuBotoes.add(btnVenda);
 		painelMenu.add(menuBotoes);
 
-		lblLogo.setIcon(new ImageIcon(TelaPrincipalBoundary.class.getResource("/edu/museu/resource/logo.png")));
+		lblLogo.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/edu/museu/resource/logo.png")));
+		lblLogo.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		ComponenteFormater.formataJlable(lblLogo, Color.white, 22);
 
 		ComponenteFormater.formataJButtonToMenu(btnEmprestimo);
@@ -68,6 +74,7 @@ public class TelaPrincipalBoundary implements ActionListener {
 		btnObra.addActionListener(this);
 		btnVenda.addActionListener(this);
 		btnVisitantes.addActionListener(this);
+		lblLogo.addMouseListener(this);
 
 		ComponenteFormater.formataJPanel(painelCentro);
 		ComponenteFormater.formataJPanelToMenu(painelMenu);
@@ -76,7 +83,6 @@ public class TelaPrincipalBoundary implements ActionListener {
 
 		painelPrincipal.add(painelMenu, BorderLayout.NORTH);
 		painelPrincipal.add(painelCentro, BorderLayout.CENTER);
-
 		tela.setForeground(Color.blue);
 		tela.setBackground(Color.WHITE);
 		tela.setContentPane(painelPrincipal);
@@ -84,6 +90,8 @@ public class TelaPrincipalBoundary implements ActionListener {
 		tela.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		tela.setSize(1100, 700);
 		tela.setVisible(true);
+		telaInicial.start();
+		selectTela(telaInicial.getPainelPrincipal());
 	}
 
 	public void selectTela(JPanel jpanel) {
@@ -103,36 +111,75 @@ public class TelaPrincipalBoundary implements ActionListener {
 	}
 
 	public static void main(String[] args) {
-		new TelaPrincipalBoundary();
+		new TelaPrincipal();
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if (arg0.getSource() == btnObra) {
+			
 			obraForm.getPainelPrincipal().invalidate();
 			obraForm.getPainelPrincipal().revalidate();
 			selectTela(obraForm.getPainelPrincipal());
+			tela.setTitle("Smart Museu - Gestão de obras");
 		} else if (arg0.getSource() == btnVisitantes) {
 			visitanteForm.getPainelPrincipal().invalidate();
 			visitanteForm.getPainelPrincipal().revalidate();
 			selectTela(visitanteForm.getPainelPrincipal());
+			tela.setTitle("Smart Museu - Gestão de visitantes");
 		} else if (arg0.getSource() == btnLocais) {
 			locaisForm.getPainelPrincipal().invalidate();
 			locaisForm.getPainelPrincipal().revalidate();
 			selectTela(locaisForm.getPainelPrincipal());
+			tela.setTitle("Smart Museu - Gestão de locais");
 		} else if (arg0.getSource() == btnEmprestimo) {
 			emprestimoForm.getPainelPrincipal().invalidate();
 			emprestimoForm.getPainelPrincipal().revalidate();
 			selectTela(emprestimoForm.getPainelPrincipal());
+			tela.setTitle("Smart Museu - Gestão de emprestimos");
 		} else if (arg0.getSource() == btnExposicao) {
 			exposicaoForm.getPainelPrincipal().invalidate();
 			exposicaoForm.getPainelPrincipal().revalidate();
 			selectTela(exposicaoForm.getPainelPrincipal());
+			tela.setTitle("Smart Museu - Gestão de exposições");
 		} else if (arg0.getSource() == btnVenda) {
 			ingressoForm.atualiza();
 			selectTela(ingressoForm.getPainelPrincipal());
+			tela.setTitle("Smart Museu - Venda de ingressos");
 		}
 
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		if (e.getSource() == lblLogo){
+			selectTela( telaInicial.getPainelPrincipal());
+		}
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

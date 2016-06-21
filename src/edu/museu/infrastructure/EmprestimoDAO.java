@@ -16,7 +16,7 @@ public class EmprestimoDAO {
 		long idGerado = 0;
 		try {
 
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "INSERT INTO `emprestimo` (`emprestimo_id`,"
 					+ " `obra_id`, `local_emprestimo_id`, "
@@ -44,7 +44,7 @@ public class EmprestimoDAO {
 			r.next();
 			idGerado = r.getLong(1);
 
-			JDBCUtil.close(con);
+			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -56,7 +56,7 @@ public class EmprestimoDAO {
 		int affectedRows = 0;
 		try {
 
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "UPDATE `emprestimo` SET"
 					+ " `emprestimo_id`=?, `obra_id`=?, `local_emprestimo_id`=?,"
@@ -80,7 +80,7 @@ public class EmprestimoDAO {
 			stmt.setLong(10, local.getEmprestimo_id());
 			affectedRows = stmt.executeUpdate();
 
-			JDBCUtil.close(con);
+			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -91,7 +91,7 @@ public class EmprestimoDAO {
 		int affectedRows = 0;
 		try {
 
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "UPDATE `emprestimo` SET"					
 					+ " `emprestimo_data_devolucao`=?,"					
@@ -103,7 +103,7 @@ public class EmprestimoDAO {
 			stmt.setLong(2, local.getEmprestimo_id());
 			affectedRows = stmt.executeUpdate();
 
-			JDBCUtil.close(con);
+			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -115,7 +115,7 @@ public class EmprestimoDAO {
 		int affectedRows = 0;
 		try {
 
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "DELETE FROM `emprestimo` WHERE `emprestimo_id`=?;";
 
@@ -125,7 +125,7 @@ public class EmprestimoDAO {
 
 			affectedRows = stmt.executeUpdate();
 
-			JDBCUtil.close(con);
+			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -136,7 +136,7 @@ public class EmprestimoDAO {
 	public Emprestimo selectById(long id) {
 		Emprestimo local = new Emprestimo();
 		try {
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "SELECT * FROM emprestimo WHERE emprestimo_id = ?";
 			PreparedStatement stmt = con.prepareStatement(query);
@@ -166,7 +166,7 @@ public class EmprestimoDAO {
 	public List<Emprestimo> selectByName(String name) {
 		List<Emprestimo> locais = new ArrayList<Emprestimo>();
 		try {
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "SELECT * FROM emprestimo WHERE emprestimo_locatario LIKE ?;";
 			PreparedStatement stmt = con.prepareStatement(query);
@@ -188,6 +188,7 @@ public class EmprestimoDAO {
 				local.setDevolvido(rs.getString("emprestimo_devolvido"));
 
 				locais.add(local);
+				JDBCUtil.getInstancia().close();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -199,7 +200,7 @@ public class EmprestimoDAO {
 	public List<Emprestimo> selectByNomeDaObra(String name) {
 		List<Emprestimo> locais = new ArrayList<Emprestimo>();
 		try {
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "SELECT * FROM emprestimo WHERE (obra_nome LIKE ? AND emprestimo.emprestimo_devolvido = 'Emprestado');";
 			PreparedStatement stmt = con.prepareStatement(query);
@@ -221,6 +222,7 @@ public class EmprestimoDAO {
 				local.setDevolvido(rs.getString("emprestimo_devolvido"));
 
 				locais.add(local);
+				JDBCUtil.getInstancia().close();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -231,7 +233,7 @@ public class EmprestimoDAO {
 	public List<Emprestimo> selectAll() {
 		List<Emprestimo> locais = new ArrayList<Emprestimo>();
 		try {
-			Connection con = JDBCUtil.getConnection();
+			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "SELECT * FROM emprestimo where "
 					+ "emprestimo.emprestimo_devolvido = 'Emprestado' ORDER BY emprestimo_previsao_devolucao";
@@ -252,7 +254,9 @@ public class EmprestimoDAO {
 				local.setDevolvido(rs.getString("emprestimo_devolvido"));
 
 				locais.add(local);
+				
 			}
+			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
