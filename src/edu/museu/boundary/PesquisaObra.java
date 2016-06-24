@@ -18,7 +18,10 @@ import edu.museu.entity.Obra;
 import edu.museu.entity.Visitante;
 
 public class PesquisaObra extends FormPesquisa{
-	private PesquisaControl control = new PesquisaObraControl();
+	private PesquisaControl control;
+	public PesquisaObra() {
+		control = new PesquisaObraControl();
+	}
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {

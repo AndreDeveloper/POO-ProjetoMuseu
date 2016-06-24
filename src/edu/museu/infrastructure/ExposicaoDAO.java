@@ -48,8 +48,12 @@ public class ExposicaoDAO {
 
 			Connection con = JDBCUtil.getInstancia().getConnection();
 
-			String query = "UPDATE `asgardprint01`.`exposicao` " + "SET `exposicao_nome`=?," + " `exposicao_valor`=?,"
-					+ " `exposicao_dataInicio`=?," + " `exposicao_dataFim`=?" + " WHERE  `exposicao_id`=?;";
+			String query = "UPDATE `asgardprint01`.`exposicao` "
+			        + "SET `exposicao_nome`=?," 
+					+ " `exposicao_valor`=?,"
+					+ " `exposicao_dataInicio`=?,"
+					+ " `exposicao_dataFim`=?" 
+					+ " WHERE  `exposicao_id`=?;";
 
 			PreparedStatement stmt = con.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
 
@@ -57,8 +61,9 @@ public class ExposicaoDAO {
 			stmt.setDouble(2, exposicao.getValor());
 			stmt.setDate(3, new Date(exposicao.getDataInicio().getTime()));
 			stmt.setDate(4, new Date(exposicao.getDataFim().getTime()));
-			stmt.setLong(4, exposicao.getId());
+			stmt.setLong(5, exposicao.getId());
 
+			affectedRows = stmt.executeUpdate();
 			JDBCUtil.getInstancia().close();
 		} catch (Exception e) {
 			e.printStackTrace();

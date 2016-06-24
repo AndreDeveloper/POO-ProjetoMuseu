@@ -351,13 +351,18 @@ public class VisitanteBoundary implements ActionListener, Observer, KeyListener 
 				telaAlterar();
 			}
 		} else if (arg0.getSource() == btnExcluir) {
-			if (controle.excluir(formToVisitante()) < 1) {
-				JOptionPane.showMessageDialog(painelPrincipal, "erro ao inserir registro", "erro",
-						JOptionPane.ERROR_MESSAGE);
-			} else {
-				JOptionPane.showMessageDialog(painelPrincipal, "Cadastro Excluido com sucesso", "Cadastro",
-						JOptionPane.INFORMATION_MESSAGE);
-				telaDefault();
+			int resposta = JOptionPane.showConfirmDialog(painelPrincipal,
+					"Voce esta prestes a excluir um registro, tem certeza que deseja continuar?", "Confirma ação?",
+					JOptionPane.YES_NO_OPTION);
+			if (resposta == JOptionPane.OK_OPTION) {
+				if (controle.excluir(formToVisitante()) < 1) {
+					JOptionPane.showMessageDialog(painelPrincipal, "erro ao inserir registro", "erro",
+							JOptionPane.ERROR_MESSAGE);
+				} else {
+					JOptionPane.showMessageDialog(painelPrincipal, "Cadastro Excluido com sucesso", "Cadastro",
+							JOptionPane.INFORMATION_MESSAGE);
+					telaDefault();
+				}
 			}
 		} else if (arg0.getSource() == btnVoltar) {
 			telaDefault();

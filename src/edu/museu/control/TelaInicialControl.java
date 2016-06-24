@@ -13,7 +13,7 @@ public class TelaInicialControl {
 	private ObraDAO dao = new ObraDAO();
 	private List<ImageIcon> listaImagens = dao.selectAllImages();
 
-	public List<ImageIcon> getImagens() {
+	public List<ImageIcon> getImagens() throws java.lang.ClassCastException {
 		List<ImageIcon> lista = new ArrayList<ImageIcon>();
 
 		Random random = new Random();

@@ -30,7 +30,7 @@ import edu.museu.entity.Local;
 import edu.museu.entity.Obra;
 import edu.museu.entity.Visitante;
 
-public class LocaisBoundary implements ActionListener, Observer{
+public class LocaisBoundary implements ActionListener, Observer {
 	private JLabel lblNome = new JLabel("Nome");
 	private JLabel lblEmail = new JLabel("Email");
 	private JLabel lblTelefone = new JLabel("Telefone");
@@ -46,7 +46,7 @@ public class LocaisBoundary implements ActionListener, Observer{
 	private JLabel lblUF = new JLabel("UF");
 	private JLabel lblStatus = new JLabel("Status");
 	private JLabel lblLogo = new JLabel("");
-	
+
 	private JTextField txtNome = new JTextField(40);
 	private JTextField txtEmail = new JTextField(40);
 	private JFormattedTextField txtTelefone = new JFormattedTextField();
@@ -57,24 +57,23 @@ public class LocaisBoundary implements ActionListener, Observer{
 	private JTextField txtComplemento = new JTextField(21);
 	private JTextField txtBairro = new JTextField(12);
 	private JTextField txtCidade = new JTextField(10);
-	
-	private JComboBox<String> cbUF = new JComboBox<String>(new String[]{
-			"","AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB",
-				"PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"
-	});
-	
+
+	private JComboBox<String> cbUF = new JComboBox<String>(
+			new String[] { "", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB",
+					"PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" });
+
 	private JRadioButton rbAtivado = new JRadioButton("Ativado");
 	private JRadioButton rbDesativado = new JRadioButton("Desativado");
 	private ButtonGroup bg = new ButtonGroup();
-	
+
 	private JButton btnSalvar = new JButton("Salvar");
 	private JButton btnAlterar = new JButton("Alterar");
 	private JButton btnExcluir = new JButton("Excluir");
 	private JButton btnVoltar = new JButton("Voltar");
 	private JButton btnPesquisar = new JButton("");
-	
+
 	private JPanel painelPrincipal = new JPanel(new GridLayout(1, 2));
-	
+
 	private Local local = new Local();
 	private LocalControl control = new LocalControl();
 
@@ -82,7 +81,6 @@ public class LocaisBoundary implements ActionListener, Observer{
 		super();
 		create();
 	}
-
 
 	public JPanel getPainelPrincipal() {
 		return painelPrincipal;
@@ -92,50 +90,50 @@ public class LocaisBoundary implements ActionListener, Observer{
 		this.painelPrincipal = painelPrincipal;
 	}
 
-	private void create(){
+	private void create() {
 		JPanel painelLeft = new JPanel(new BorderLayout());
 		JPanel painelRight = new JPanel(new BorderLayout());
-		
-		JPanel painelCima = new JPanel(new GridLayout(4, 1,0,0));
-		JPanel painelBaixo = new JPanel(new GridLayout(7, 1,0,0));
-	
-		JPanel linha1 = new JPanel(new FlowLayout(FlowLayout.CENTER,5,0));
-		JPanel linha2 = new JPanel(new FlowLayout(FlowLayout.LEFT,5,0));
-		JPanel linha3 = new JPanel(new FlowLayout(FlowLayout.LEFT,5,0));
-		JPanel linha4 = new JPanel(new FlowLayout(FlowLayout.LEFT,5,0));
-		JPanel linha5 = new JPanel(new FlowLayout(FlowLayout.CENTER,5,0));
-		JPanel linha6 = new JPanel(new FlowLayout(FlowLayout.LEFT,5,0));
-		JPanel linha7 = new JPanel(new FlowLayout(FlowLayout.LEFT,5,0));
-		JPanel linha8 = new JPanel(new FlowLayout(FlowLayout.LEFT,5,0));
-		JPanel linha9 = new JPanel(new FlowLayout(FlowLayout.LEFT,5,0));
-		JPanel linha10 = new JPanel(new FlowLayout(FlowLayout.CENTER,5,0));
-		JPanel linha11 = new JPanel(new FlowLayout(FlowLayout.CENTER,25,0));
-	
+
+		JPanel painelCima = new JPanel(new GridLayout(4, 1, 0, 0));
+		JPanel painelBaixo = new JPanel(new GridLayout(7, 1, 0, 0));
+
+		JPanel linha1 = new JPanel(new FlowLayout(FlowLayout.CENTER, 5, 0));
+		JPanel linha2 = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 0));
+		JPanel linha3 = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 0));
+		JPanel linha4 = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 0));
+		JPanel linha5 = new JPanel(new FlowLayout(FlowLayout.CENTER, 5, 0));
+		JPanel linha6 = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 0));
+		JPanel linha7 = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 0));
+		JPanel linha8 = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 0));
+		JPanel linha9 = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 0));
+		JPanel linha10 = new JPanel(new FlowLayout(FlowLayout.CENTER, 5, 0));
+		JPanel linha11 = new JPanel(new FlowLayout(FlowLayout.CENTER, 25, 0));
+
 		bg.add(rbAtivado);
 		bg.add(rbDesativado);
-		
+
 		linha1.add(lblLocal);
-	
+
 		linha2.add(lblNome);
 		linha2.add(txtNome);
 		linha2.add(btnPesquisar);
-		
+
 		linha3.add(lblEmail);
 		linha3.add(txtEmail);
-	
+
 		linha4.add(lblTelefone);
 		linha4.add(txtTelefone);
 		linha4.add(lblResponsavel);
 		linha4.add(txtResponsavel);
-		
+
 		linha5.add(lblEndereco);
-		
+
 		linha6.add(lblCep);
 		linha6.add(txtCep);
-		
+
 		linha7.add(lblLogradouro);
 		linha7.add(txtLogradouro);
-		
+
 		linha8.add(lblNumero);
 		linha8.add(txtNumero);
 		linha8.add(lblComplemento);
@@ -149,16 +147,15 @@ public class LocaisBoundary implements ActionListener, Observer{
 		linha9.add(cbUF);
 
 		linha10.add(lblStatus);
-		
+
 		linha11.add(rbAtivado);
 		linha11.add(rbDesativado);
-		
-		
+
 		painelCima.add(linha1);
 		painelCima.add(linha2);
 		painelCima.add(linha3);
 		painelCima.add(linha4);
-		
+
 		painelBaixo.add(linha5);
 		painelBaixo.add(linha6);
 		painelBaixo.add(linha7);
@@ -166,13 +163,13 @@ public class LocaisBoundary implements ActionListener, Observer{
 		painelBaixo.add(linha9);
 		painelBaixo.add(linha10);
 		painelBaixo.add(linha11);
-		
+
 		JPanel painelBotoes = new JPanel(new FlowLayout(FlowLayout.CENTER, 30, 0));
 		painelBotoes.add(btnSalvar);
 		painelBotoes.add(btnAlterar);
 		painelBotoes.add(btnExcluir);
 		painelBotoes.add(btnVoltar);
-		
+
 		ComponenteFormater.formataJlable(lblBairro, Color.DARK_GRAY, 22);
 		ComponenteFormater.formataJlable(lblCep, Color.DARK_GRAY, 22);
 		ComponenteFormater.formataJlable(lblCidade, Color.DARK_GRAY, 22);
@@ -188,20 +185,18 @@ public class LocaisBoundary implements ActionListener, Observer{
 		ComponenteFormater.formataJlable(lblTelefone, Color.DARK_GRAY, 22);
 		ComponenteFormater.formataJlable(lblUF, Color.DARK_GRAY, 22);
 		ComponenteFormater.formataJlable(lblLogo, Color.DARK_GRAY, 22);
-		
+
 		ComponenteFormater.formataJComboBox(cbUF, Color.DARK_GRAY, 18);
-		
+
 		ComponenteFormater.formataJRadioButton(rbAtivado, Color.DARK_GRAY, 22);
 		ComponenteFormater.formataJRadioButton(rbDesativado, Color.DARK_GRAY, 22);
-		
+
 		ComponenteFormater.formataJButton(btnAlterar);
 		ComponenteFormater.formataJButton(btnExcluir);
 		ComponenteFormater.formataJButton(btnPesquisar);
 		ComponenteFormater.formataJButton(btnSalvar);
 		ComponenteFormater.formataJButton(btnVoltar);
-		
-		
-		
+
 		JPanel painelCentro = new JPanel(new FlowLayout(FlowLayout.LEFT, 30, 30));
 		painelCentro.add(painelCima);
 		painelCentro.add(painelBaixo);
@@ -225,7 +220,7 @@ public class LocaisBoundary implements ActionListener, Observer{
 		ComponenteFormater.formataJPanel(linha9);
 		ComponenteFormater.formataJPanel(linha10);
 		ComponenteFormater.formataJPanel(linha11);
-		
+
 		lblBairro.setPreferredSize(lblLogradouro.getPreferredSize());
 		lblCep.setPreferredSize(lblLogradouro.getPreferredSize());
 		lblEmail.setPreferredSize(lblLogradouro.getPreferredSize());
@@ -234,27 +229,16 @@ public class LocaisBoundary implements ActionListener, Observer{
 		lblNumero.setPreferredSize(lblLogradouro.getPreferredSize());
 		lblTelefone.setPreferredSize(lblLogradouro.getPreferredSize());
 		lblStatus.setHorizontalAlignment(JLabel.CENTER);
-		
-		byte[] bs = ImagemFormater.imagemParaByte(				
-				new ImageIcon(VisitanteBoundary.class.getResource("/edu/museu/resource/locais.png"))
-				);
+
+		byte[] bs = ImagemFormater
+				.imagemParaByte(new ImageIcon(VisitanteBoundary.class.getResource("/edu/museu/resource/locais.png")));
 		lblLogo.setIcon(ImagemFormater.bytesParaImagem(bs));
-		btnPesquisar.setIcon(
-				new ImageIcon(VisitanteBoundary.class.getResource("/edu/museu/resource/lupa_16.png"))
-				);
-		btnSalvar.setIcon(
-				new ImageIcon(VisitanteBoundary.class.getResource("/edu/museu/resource/save.png"))
-				);
-		btnAlterar.setIcon(
-				new ImageIcon(VisitanteBoundary.class.getResource("/edu/museu/resource/edit.png"))
-				);
-		btnExcluir.setIcon(
-				new ImageIcon(VisitanteBoundary.class.getResource("/edu/museu/resource/delete.png"))
-				);
-		btnVoltar.setIcon(
-				new ImageIcon(VisitanteBoundary.class.getResource("/edu/museu/resource/back.png"))
-				);
-		
+		btnPesquisar.setIcon(new ImageIcon(VisitanteBoundary.class.getResource("/edu/museu/resource/lupa_16.png")));
+		btnSalvar.setIcon(new ImageIcon(VisitanteBoundary.class.getResource("/edu/museu/resource/save.png")));
+		btnAlterar.setIcon(new ImageIcon(VisitanteBoundary.class.getResource("/edu/museu/resource/edit.png")));
+		btnExcluir.setIcon(new ImageIcon(VisitanteBoundary.class.getResource("/edu/museu/resource/delete.png")));
+		btnVoltar.setIcon(new ImageIcon(VisitanteBoundary.class.getResource("/edu/museu/resource/back.png")));
+
 		try {
 			MaskFormatter maskCep = new MaskFormatter("#####-###");
 			maskCep.setPlaceholderCharacter('_');
@@ -267,26 +251,26 @@ public class LocaisBoundary implements ActionListener, Observer{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		painelLeft.add(lblLogo);
-		
+
 		btnAlterar.addActionListener(this);
 		btnExcluir.addActionListener(this);
 		btnPesquisar.addActionListener(this);
 		btnSalvar.addActionListener(this);
 		btnVoltar.addActionListener(this);
-		
+
 		painelRight.add(painelCentro, BorderLayout.CENTER);
 		painelRight.add(painelBotoes, BorderLayout.SOUTH);
-		
+
 		painelPrincipal.add(painelLeft);
 		painelPrincipal.add(painelRight);
-		
+
 		telaDefault();
 	}
-	
-	private Local formToLocal(){
-		if (validaCampos()){
+
+	private Local formToLocal() {
+		if (validaCampos()) {
 			Local local = this.local;
 			local.setBairro(txtBairro.getText());
 			local.setCep(txtCep.getText());
@@ -300,12 +284,12 @@ public class LocaisBoundary implements ActionListener, Observer{
 			local.setTelefone(txtTelefone.getText());
 			local.setUf(cbUF.getSelectedItem().toString());
 			local.setAtivo(getDisponivel());
-		
-		return local;
+
+			return local;
 		}
 		return null;
 	}
-	
+
 	private void localToForm(Local local) {
 		this.local = local;
 		txtBairro.setText(local.getBairro());
@@ -320,29 +304,33 @@ public class LocaisBoundary implements ActionListener, Observer{
 		txtTelefone.setText(local.getTelefone());
 		cbUF.setSelectedItem(local.getUf());
 		setAtivo(local.isAtivo());
-		
+
 	}
-	
-	private void setAtivo(boolean b){
-		if (b){
+
+	private void setAtivo(boolean b) {
+		if (b) {
 			rbAtivado.setSelected(true);
-		}else{
+		} else {
 			rbDesativado.setSelected(true);
 		}
 	}
-	
-	private boolean getDisponivel(){
-		if(rbAtivado.isSelected()) return true;
-		if(rbDesativado.isSelected()) return false;
+
+	private boolean getDisponivel() {
+		if (rbAtivado.isSelected())
+			return true;
+		if (rbDesativado.isSelected())
+			return false;
 		return false;
 	}
-	private void telaDefault(){
+
+	private void telaDefault() {
 		btnSalvar.setEnabled(true);
 		btnExcluir.setEnabled(false);
 		btnVoltar.setEnabled(false);
 		btnAlterar.setEnabled(false);
 		limpaCampos();
 	}
+
 	private void limpaCampos() {
 		txtBairro.setText("");
 		txtCep.setText("");
@@ -356,32 +344,25 @@ public class LocaisBoundary implements ActionListener, Observer{
 		txtTelefone.setText("");
 		cbUF.setSelectedIndex(0);
 		rbAtivado.setSelected(true);
-		
+
 	}
 
-
-	private void telaAlterar(){
+	private void telaAlterar() {
 		btnSalvar.setEnabled(false);
 		btnExcluir.setEnabled(true);
 		btnVoltar.setEnabled(true);
 		btnAlterar.setEnabled(true);
 	}
-	
-	private boolean validaCampos(){
-		if(
-				txtBairro.getText().length() <=0 ||
-				txtCidade.getText().length() <=0 ||
-				txtComplemento.getText().length() <=0 ||
-				txtEmail.getText().length() <=0 ||
-				txtLogradouro.getText().length() <=0 ||
-				txtNome.getText().length() <=0 ||
-				txtNumero.getText().length() <=0 ||
-				txtResponsavel.getText().length() <=0 ||
-				txtCep.getText().contains("_") ||
-				txtTelefone.getText().contains("_") ||
-				cbUF.getSelectedIndex() <= 0
-				){
-			JOptionPane.showMessageDialog(painelPrincipal, "Preencha corretamente todos os campos", "erro de preenchimento", JOptionPane.ERROR_MESSAGE);
+
+	private boolean validaCampos() {
+		if (txtBairro.getText().length() <= 0 || txtCidade.getText().length() <= 0
+				|| txtComplemento.getText().length() <= 0 || txtEmail.getText().length() <= 0
+				|| txtLogradouro.getText().length() <= 0 || txtNome.getText().length() <= 0
+				|| txtNumero.getText().length() <= 0 || txtResponsavel.getText().length() <= 0
+				|| txtCep.getText().contains("_") || txtTelefone.getText().contains("_")
+				|| cbUF.getSelectedIndex() <= 0) {
+			JOptionPane.showMessageDialog(painelPrincipal, "Preencha corretamente todos os campos",
+					"erro de preenchimento", JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
 		return true;
@@ -390,24 +371,29 @@ public class LocaisBoundary implements ActionListener, Observer{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getSource() == btnSalvar && validaCampos()){
+		if (e.getSource() == btnSalvar && validaCampos()) {
 			control.salvar(formToLocal());
 			telaDefault();
-		}else if(e.getSource() == btnPesquisar){
+		} else if (e.getSource() == btnPesquisar) {
 			FormPesquisa pesquisa = new PesquisaLocais();
 			pesquisa.addObserver(this);
 			pesquisa.show();
 			telaAlterar();
-		}else if(e.getSource() == btnAlterar && validaCampos()){
+		} else if (e.getSource() == btnAlterar && validaCampos()) {
 			control.Alterar(formToLocal());
 			telaAlterar();
-		}else if(e.getSource() == btnExcluir){
-			control.excluir(formToLocal());
-			telaDefault();
-		}else if(e.getSource() == btnVoltar){
+		} else if (e.getSource() == btnExcluir) {
+			int resposta = JOptionPane.showConfirmDialog(painelPrincipal,
+					"Você está prestes a excluir um registro!\nTem certeza que deseja continuar?", "Confirmação",
+					JOptionPane.YES_NO_OPTION);
+			if (resposta == JOptionPane.YES_OPTION) {
+				control.excluir(formToLocal());
+				telaDefault();
+			}
+		} else if (e.getSource() == btnVoltar) {
 			telaDefault();
 		}
-		
+
 	}
 
 	@Override

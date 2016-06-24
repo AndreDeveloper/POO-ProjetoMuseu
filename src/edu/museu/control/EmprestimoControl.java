@@ -9,7 +9,9 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
 import edu.museu.entity.Emprestimo;
+import edu.museu.entity.Obra;
 import edu.museu.infrastructure.EmprestimoDAO;
+import edu.museu.infrastructure.ObraDAO;
 
 public class EmprestimoControl implements TableModel{
 	private List<Emprestimo> listaEmprestimos = new ArrayList<Emprestimo>();
@@ -30,7 +32,12 @@ public class EmprestimoControl implements TableModel{
 	}
 	
 	public void salvar(Emprestimo emprestimo) throws SQLException{
+		ObraDAO obraDAO = new ObraDAO();
+		Obra obra = new Obra();
+		obra.setId(emprestimo.getObra_id());
+		obra.setDisponivel(false);
 		if(emprestimoDAO.insert(emprestimo) > 0){
+			obraDAO.updateDisponibilidade(obra);
 			JOptionPane.showMessageDialog(null, "Emprestimo realizado com sucesso!", "Emprestado", JOptionPane.INFORMATION_MESSAGE);
 			listaEmprestimos = emprestimoDAO.selectAll();
 		}else{
@@ -55,7 +62,12 @@ public class EmprestimoControl implements TableModel{
 		}
 	}
 	public void devolver(Emprestimo emprestimo) throws SQLException{
+		ObraDAO obraDAO = new ObraDAO();
+		Obra obra = new Obra();
+		obra.setId(emprestimo.getObra_id());
+		obra.setDisponivel(true);
 		if(emprestimoDAO.updateDevolvido(emprestimo) > 0){
+			obraDAO.updateDisponibilidade(obra);
 			JOptionPane.showMessageDialog(null, "Obra devolvida!", "Emprestado", JOptionPane.INFORMATION_MESSAGE);
 			listaEmprestimos = emprestimoDAO.selectAll();
 		}else{

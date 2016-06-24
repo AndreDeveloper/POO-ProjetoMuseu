@@ -62,9 +62,9 @@ public class IngressoControl implements TableModel{
 	public String getColumnName(int columnIndex) {
 		switch(columnIndex){
 		case 0: return "Nome";
-		case 1: return "Data de Inicio";
-		case 2: return "Data de Termino";
-		case 3: return "Data de Valor";
+		case 1: return "Inicio";
+		case 2: return "Termino";
+		case 3: return "Valor";
 		}
 		return null;
 	}

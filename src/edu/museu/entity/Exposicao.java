@@ -39,6 +39,11 @@ public class Exposicao {
 		this.dataFim = dataFim;
 	}
 	
+	@Override
+	public String toString() {
+		return "Exposicao [id=" + id + ", nome=" + nome + ", valor=" + valor + ", dataInicio=" + dataInicio
+				+ ", dataFim=" + dataFim + "]";
+	}
 	
 	
 	

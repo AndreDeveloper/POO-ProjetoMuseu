@@ -230,7 +230,7 @@ public class ExposicaoBoundary implements ActionListener, Observer {
 			tabelaExposicao.invalidate();
 			tabelaExposicao.revalidate();
 		} else if (e.getSource() == btnSalvar) {
-			if (validaCampos()){
+			if (validaCampos()) {
 				control.salvar(formToExposicao(), control.getListaExposicao());
 				telaDefault();
 			}
@@ -250,8 +250,13 @@ public class ExposicaoBoundary implements ActionListener, Observer {
 				}
 			}
 		} else if (e.getSource() == btnExcluir) {
-			control.deletar(formToExposicao());
-			telaDefault();
+			int resposta = JOptionPane.showConfirmDialog(painelPrincipal,
+					"voce esta prestes a excluir um registro!\nTem certeza que deseja continuar?", "Confirmação",
+					JOptionPane.YES_NO_OPTION);
+			if (resposta == JOptionPane.YES_OPTION) {
+				control.deletar(formToExposicao());
+				telaDefault();
+			}
 		} else if (e.getSource() == btnVoltar) {
 			telaDefault();
 		}
@@ -275,7 +280,7 @@ public class ExposicaoBoundary implements ActionListener, Observer {
 					JOptionPane.ERROR_MESSAGE);
 			return false;
 		} else if (dcDataFim.getDate().getTime() < dcDataInicio.getDate().getTime()) {
-					JOptionPane.showMessageDialog(null, "A data de termino não pode ser menos que a data de inicio", "Erro",
+			JOptionPane.showMessageDialog(null, "A data de termino não pode ser menos que a data de inicio", "Erro",
 					JOptionPane.ERROR_MESSAGE);
 			return false;
 		} else if (dcDataInicio.getDate().getTime() < new Date().getTime()) {
@@ -283,11 +288,11 @@ public class ExposicaoBoundary implements ActionListener, Observer {
 					"Erro", JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
-		try{
+		try {
 			Double.parseDouble(txtIngresso.getText());
-		}catch(java.lang.NumberFormatException e){
-			JOptionPane.showMessageDialog(null, "Insira apenas valores validos no campo ingresso!",
-					"Erro", JOptionPane.ERROR_MESSAGE);			
+		} catch (java.lang.NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "Insira apenas valores validos no campo ingresso!", "Erro",
+					JOptionPane.ERROR_MESSAGE);
 			txtIngresso.setText("");
 			txtIngresso.requestFocus();
 			return false;

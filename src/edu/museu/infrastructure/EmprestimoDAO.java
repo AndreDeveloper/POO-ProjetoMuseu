@@ -18,25 +18,24 @@ public class EmprestimoDAO {
 
 			Connection con = JDBCUtil.getInstancia().getConnection();
 
-			String query = "INSERT INTO `emprestimo` (`emprestimo_id`,"
+			String query = "INSERT INTO `emprestimo` ("
 					+ " `obra_id`, `local_emprestimo_id`, "
 					+ "`emprestimo_sysdata`, `obra_nome`, "
 					+ "`emprestimo_locatario`, `emprestimo_data_saida`, "
 					+ "`emprestimo_previsao_devolucao`, `emprestimo_data_devolucao`,"
-					+ "`emprestimo_devolvido`) VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?);";
+					+ "`emprestimo_devolvido`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			PreparedStatement stmt = con.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
 
-			stmt.setLong(1, local.getEmprestimo_id());
-			stmt.setLong(2, local.getObra_id());
-			stmt.setLong(3, local.getLocal_emprestimo_id());
-			stmt.setDate(4, new Date(local.getData().getTime()));
-			stmt.setString(5, local.getNomedaObra());
-			stmt.setString(6, local.getLocatario());
-			stmt.setDate(7, new Date(local.getDataSaida().getTime()));
-			stmt.setDate(8, new Date(local.getPrevisaoDevolucao().getTime()));
-			stmt.setDate(9, null);			
-			stmt.setString(10, local.getDevolvido());
+			stmt.setLong(1, local.getObra_id());
+			stmt.setLong(2, local.getLocal_emprestimo_id());
+			stmt.setDate(3, new Date(local.getData().getTime()));
+			stmt.setString(4, local.getNomedaObra());
+			stmt.setString(5, local.getLocatario());
+			stmt.setDate(6, new Date(local.getDataSaida().getTime()));
+			stmt.setDate(7, new Date(local.getPrevisaoDevolucao().getTime()));
+			stmt.setDate(8, null);			
+			stmt.setString(9, local.getDevolvido());
 			
 			stmt.executeUpdate();
 

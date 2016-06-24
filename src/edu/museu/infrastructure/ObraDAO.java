@@ -54,10 +54,8 @@ public class ObraDAO {
 
 			Connection con = JDBCUtil.getInstancia().getConnection();
 
-			String query = "UPDATE `obra` SET `obra_nome`=?,"
-					+ " `obra_autor`=?,  `obra_data`=?,"
-					+ " `obra_biografia`=?, `obra_tipo`=?, "
-					+ "`obra_categoria`=?, `obra_localizacao`=?, "
+			String query = "UPDATE `obra` SET `obra_nome`=?," + " `obra_autor`=?,  `obra_data`=?,"
+					+ " `obra_biografia`=?, `obra_tipo`=?, " + "`obra_categoria`=?, `obra_localizacao`=?, "
 					+ "`obra_disponibilidade`=?, `obra_imagem`=? WHERE  `obra_id`=?;";
 
 			PreparedStatement stmt = con.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -83,6 +81,7 @@ public class ObraDAO {
 
 		return affectedRows;
 	}
+
 	public int updateDisponibilidade(Obra obra) {
 		int affectedRows = 0;
 		try {
@@ -92,7 +91,7 @@ public class ObraDAO {
 			String query = "UPDATE `obra` SET `obra_disponibilidade`=? WHERE  `obra_id`=?;";
 
 			PreparedStatement stmt = con.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
-			
+
 			stmt.setBoolean(1, obra.isDisponivel());
 
 			stmt.setLong(2, obra.getId());
@@ -159,6 +158,7 @@ public class ObraDAO {
 
 		return obra;
 	}
+
 	public ImageIcon selectImageById(long id) {
 		ImageIcon imageIcon = new ImageIcon();
 		try {
@@ -186,49 +186,9 @@ public class ObraDAO {
 		try {
 			Connection con = JDBCUtil.getInstancia().getConnection();
 
-			String query = "SELECT "
-					+ "`obra_id`,"
-					+ "`obra_nome`,"
-					+ " `obra_autor`,"
-					+ " `obra_data`,"
-					+ " `obra_biografia`,"
-					+ " `obra_tipo`,"
-					+ " `obra_categoria`,"
-					+ " `obra_localizacao`,"
-					+ " `obra_disponibilidade`"
-					+ " FROM obra WHERE obra_nome LIKE ?;";
-			PreparedStatement stmt = con.prepareStatement(query);
-
-			stmt.setString(1, "%" + name + "%");
-
-			ResultSet rs = stmt.executeQuery();
-			while (rs.next()) {
-				Obra obra = new Obra();
-				obra.setId(rs.getLong("obra_id"));
-				obra.setNomeObra(rs.getString("obra_nome"));
-				obra.setNomeAutor(rs.getString("obra_autor"));
-				obra.setDataObra((java.util.Date) rs.getDate("obra_data"));
-				obra.setBiografia(rs.getString("obra_biografia"));
-				obra.setTipoObra(rs.getString("obra_tipo"));
-				obra.setCategoriaObra(rs.getString("obra_categoria"));
-				obra.setLocalizacaoObra(rs.getString("obra_localizacao"));
-				obra.setDisponivel(rs.getBoolean("obra_disponibilidade"));				
-				locais.add(obra);
-			}
-			JDBCUtil.getInstancia().close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return locais;
-	}
-	public List<Obra> selectByObrasDisponiveis(String name) {
-		List<Obra> locais = new ArrayList<Obra>();
-		try {
-			Connection con = JDBCUtil.getInstancia().getConnection();
-
-			String query = "SELECT * FROM obra WHERE obra_nome LIKE ? "
-					+ "AND obra_disponibilidade = 1;";
+			String query = "SELECT " + "`obra_id`," + "`obra_nome`," + " `obra_autor`," + " `obra_data`,"
+					+ " `obra_biografia`," + " `obra_tipo`," + " `obra_categoria`," + " `obra_localizacao`,"
+					+ " `obra_disponibilidade`" + " FROM obra WHERE obra_nome LIKE ?;";
 			PreparedStatement stmt = con.prepareStatement(query);
 
 			stmt.setString(1, "%" + name + "%");
@@ -245,7 +205,78 @@ public class ObraDAO {
 				obra.setCategoriaObra(rs.getString("obra_categoria"));
 				obra.setLocalizacaoObra(rs.getString("obra_localizacao"));
 				obra.setDisponivel(rs.getBoolean("obra_disponibilidade"));
-				obra.setImagem(ImagemFormater.bytesParaImagem(rs.getBytes("obra_imagem")));
+				locais.add(obra);
+			}
+			JDBCUtil.getInstancia().close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return locais;
+	}
+	public List<Obra> selectByNameAndDisponiveis(String name) {
+		List<Obra> locais = new ArrayList<Obra>();
+		try {
+			Connection con = JDBCUtil.getInstancia().getConnection();
+			
+			String query = "SELECT " + "`obra_id`," + "`obra_nome`," + " `obra_autor`," + " `obra_data`,"
+					+ " `obra_biografia`," + " `obra_tipo`," + " `obra_categoria`," + " `obra_localizacao`,"
+					+ " `obra_disponibilidade`" + " FROM obra WHERE obra_nome LIKE ? AND obra_disponibilidade = 1;";
+			PreparedStatement stmt = con.prepareStatement(query);
+			
+			stmt.setString(1, "%" + name + "%");
+			
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				Obra obra = new Obra();
+				obra.setId(rs.getLong("obra_id"));
+				obra.setNomeObra(rs.getString("obra_nome"));
+				obra.setNomeAutor(rs.getString("obra_autor"));
+				obra.setDataObra((java.util.Date) rs.getDate("obra_data"));
+				obra.setBiografia(rs.getString("obra_biografia"));
+				obra.setTipoObra(rs.getString("obra_tipo"));
+				obra.setCategoriaObra(rs.getString("obra_categoria"));
+				obra.setLocalizacaoObra(rs.getString("obra_localizacao"));
+				obra.setDisponivel(rs.getBoolean("obra_disponibilidade"));
+				locais.add(obra);
+			}
+			JDBCUtil.getInstancia().close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return locais;
+	}
+
+	public List<Obra> selectByObrasDisponiveis() {
+		List<Obra> locais = new ArrayList<Obra>();
+		try {
+			Connection con = JDBCUtil.getInstancia().getConnection();
+
+			String query = "SELECT "
+					+ " `obra_id`," 
+					+ " `obra_nome`," 
+					+ " `obra_autor`," + " `obra_data`,"
+					+ " `obra_biografia`," 
+					+ " `obra_tipo`," 
+					+ " `obra_categoria`," 
+					+ " `obra_localizacao`,"
+					+ " `obra_disponibilidade`"
+					+ " FROM obra WHERE obra_disponibilidade = 1;";
+			PreparedStatement stmt = con.prepareStatement(query);
+
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				Obra obra = new Obra();
+				obra.setId(rs.getLong("obra_id"));
+				obra.setNomeObra(rs.getString("obra_nome"));
+				obra.setNomeAutor(rs.getString("obra_autor"));
+				obra.setDataObra((java.util.Date) rs.getDate("obra_data"));
+				obra.setBiografia(rs.getString("obra_biografia"));
+				obra.setTipoObra(rs.getString("obra_tipo"));
+				obra.setCategoriaObra(rs.getString("obra_categoria"));
+				obra.setLocalizacaoObra(rs.getString("obra_localizacao"));
+				obra.setDisponivel(rs.getBoolean("obra_disponibilidade"));
 				locais.add(obra);
 			}
 			JDBCUtil.getInstancia().close();
@@ -261,17 +292,9 @@ public class ObraDAO {
 		try {
 			Connection con = JDBCUtil.getInstancia().getConnection();
 
-			String query = "SELECT "
-					+ "`obra_id`,"
-					+ "`obra_nome`,"
-					+ " `obra_autor`,"
-					+ " `obra_data`,"
-					+ " `obra_biografia`,"
-					+ " `obra_tipo`,"
-					+ " `obra_categoria`,"
-					+ " `obra_localizacao`,"
-					+ " `obra_disponibilidade`"
-					+ " FROM obra WHERE obra_autor LIKE ?;";
+			String query = "SELECT " + "`obra_id`," + "`obra_nome`," + " `obra_autor`," + " `obra_data`,"
+					+ " `obra_biografia`," + " `obra_tipo`," + " `obra_categoria`," + " `obra_localizacao`,"
+					+ " `obra_disponibilidade`" + " FROM obra WHERE obra_autor LIKE ?;";
 			PreparedStatement stmt = con.prepareStatement(query);
 
 			stmt.setString(1, "%" + name + "%");
@@ -304,15 +327,14 @@ public class ObraDAO {
 			Connection con = JDBCUtil.getInstancia().getConnection();
 
 			String query = "SELECT "
-					+ "`obra_id`,"
-					+ "`obra_nome`,"
-					+ " `obra_autor`,"
-					+ " `obra_data`,"
-					+ " `obra_biografia`,"
-					+ " `obra_tipo`,"
-					+ " `obra_categoria`,"
+					+ " `obra_id`," 
+					+ " `obra_nome`," 
+					+ " `obra_autor`," + " `obra_data`,"
+					+ " `obra_biografia`," 
+					+ " `obra_tipo`," 
+					+ " `obra_categoria`," 
 					+ " `obra_localizacao`,"
-					+ " `obra_disponibilidade`"
+					+ " `obra_disponibilidade`" 
 					+ " FROM obra;";
 			PreparedStatement stmt = con.prepareStatement(query);
 
@@ -328,7 +350,7 @@ public class ObraDAO {
 				obra.setCategoriaObra(rs.getString("obra_categoria"));
 				obra.setLocalizacaoObra(rs.getString("obra_localizacao"));
 				obra.setDisponivel(rs.getBoolean("obra_disponibilidade"));
-				//obra.setImagem(ImagemFormater.bytesParaImagem(rs.getBytes("obra_imagem")));
+				// obra.setImagem(ImagemFormater.bytesParaImagem(rs.getBytes("obra_imagem")));
 
 				locais.add(obra);
 			}
@@ -339,15 +361,15 @@ public class ObraDAO {
 
 		return locais;
 	}
-	public List<ImageIcon> selectAllImages() {
+
+	public List<ImageIcon> selectAllImages() throws java.lang.ClassCastException {
 		List<ImageIcon> imagens = new ArrayList<ImageIcon>();
 		try {
 			Connection con = JDBCUtil.getInstancia().getConnection();
-			
-			String query = "SELECT "				
-					+ " * FROM obra;";
+
+			String query = "SELECT " + " * FROM obra;";
 			PreparedStatement stmt = con.prepareStatement(query);
-			
+
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				imagens.add(ImagemFormater.bytesParaImagem(rs.getBytes("obra_imagem"), 200, 200));
@@ -356,7 +378,7 @@ public class ObraDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return imagens;
 	}
 }

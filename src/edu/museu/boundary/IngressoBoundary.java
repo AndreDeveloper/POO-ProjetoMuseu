@@ -1,7 +1,6 @@
 package edu.museu.boundary;
 
 import java.awt.BorderLayout;
-import java.awt.Checkbox;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -9,8 +8,6 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -21,10 +18,8 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.plaf.basic.BasicBorders.RadioButtonBorder;
 
 import edu.museu.control.ComponenteFormater;
 import edu.museu.control.IngressoControl;
@@ -280,7 +275,8 @@ public class IngressoBoundary implements ActionListener, ListSelectionListener{
 		} else if (e.getSource() == btnVender){
 			if (tabela.getSelectedRow() >= 0){
 			control.salvar(formToIngresso());
-			JOptionPane.showMessageDialog(null, "ingresso gerado");
+			Confirmacao confirmacao = new Confirmacao(formToIngresso());
+			
 			}else{
 				JOptionPane.showMessageDialog(painelPrincipal,
 						"Escolha uma exposição!", "erro", JOptionPane.ERROR_MESSAGE);

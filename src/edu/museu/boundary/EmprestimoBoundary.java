@@ -28,26 +28,26 @@ import com.toedter.calendar.JDateChooser;
 import edu.museu.control.ComponenteFormater;
 import edu.museu.control.EmprestimoControl;
 import edu.museu.control.Observer;
+import edu.museu.control.PesquisaObraControl;
 import edu.museu.entity.Emprestimo;
 import edu.museu.entity.Local;
 import edu.museu.entity.Obra;
 
-
-public class EmprestimoBoundary implements ActionListener, ListSelectionListener, MouseListener, Observer{
+public class EmprestimoBoundary implements ActionListener, ListSelectionListener, MouseListener, Observer {
 	private JLabel lblObra = new JLabel("Obra");
 	private JLabel lblNomeObra = new JLabel("Nome da obra");
 	private JLabel lblDestinatario = new JLabel("Destinatário");
 	private JLabel lblDataSaida = new JLabel("Data de saida");
 	private JLabel lblDevolucao = new JLabel("Previsão de devolução");
 	private JLabel lbltitulo = new JLabel("Relação de Obras Emprestadas");
-	
+
 	private JTextField txtObra = new JTextField(3);
 	private JTextField txtNomeObra = new JTextField(35);
 	private JTextField txtDestinatario = new JTextField(3);
 	private JTextField txtNomeDestinatario = new JTextField(35);
 	private JDateChooser dcSaida = new JDateChooser();
 	private JDateChooser dcDevolucao = new JDateChooser();
-	
+
 	private JButton btnSalvar = new JButton("Emprestar");
 	private JButton btnAlterar = new JButton("Alterar");
 	private JButton btnExcluir = new JButton("Excluir");
@@ -55,11 +55,11 @@ public class EmprestimoBoundary implements ActionListener, ListSelectionListener
 	private JButton btnVoltar = new JButton("Voltar");
 	private JButton btnPesquisarObra = new JButton();
 	private JButton btnPesquisarLocal = new JButton();
-	
+
 	private JTable tabela = new JTable();
 	private JScrollPane scrollPane = new JScrollPane();
 	private Emprestimo emprestimo = new Emprestimo();
-	
+
 	private EmprestimoControl control = new EmprestimoControl();
 
 	private JPanel painelPrincipal = new JPanel(new GridLayout(1, 2));
@@ -77,47 +77,46 @@ public class EmprestimoBoundary implements ActionListener, ListSelectionListener
 		this.painelPrincipal = painelPrincipal;
 	}
 
-	public void create(){
+	public void create() {
 		JPanel painelLeft = new JPanel(new BorderLayout());
 		JPanel painelRigh = new JPanel(new BorderLayout());
 		JPanel painelCentro = new JPanel(new GridLayout(5, 1));
-		JPanel painelBotoes = new JPanel(new FlowLayout(FlowLayout.CENTER,25,15));
-		
+		JPanel painelBotoes = new JPanel(new FlowLayout(FlowLayout.CENTER, 25, 15));
+
 		JPanel linha1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JPanel linha2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JPanel linha3 = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JPanel linha4 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		
+
 		linha1.add(lblObra);
 		linha1.add(txtObra);
 		linha1.add(txtNomeObra);
 		linha1.add(btnPesquisarObra);
-		
-		
+
 		linha2.add(lblDestinatario);
 		linha2.add(txtDestinatario);
 		linha2.add(txtNomeDestinatario);
 		linha2.add(btnPesquisarLocal);
-		
+
 		linha3.add(lblDataSaida);
 		linha3.add(dcSaida);
 		linha3.add(lblDevolucao);
 		linha3.add(dcDevolucao);
-		
+
 		painelCentro.add(linha1);
 		painelCentro.add(linha2);
 		painelCentro.add(linha3);
 		painelCentro.add(linha4);
-		
+
 		painelBotoes.add(btnSalvar);
 		painelBotoes.add(btnAlterar);
 		painelBotoes.add(btnExcluir);
 		painelBotoes.add(btnDevolver);
 		painelBotoes.add(btnVoltar);
-		
+
 		scrollPane.setViewportView(tabela);
 		tabela.getSelectionModel().addListSelectionListener(this);
-		
+
 		ComponenteFormater.formataJlable(lblDataSaida, Color.DARK_GRAY, 20);
 		ComponenteFormater.formataJlable(lblDestinatario, Color.DARK_GRAY, 20);
 		ComponenteFormater.formataJlable(lblDevolucao, Color.DARK_GRAY, 20);
@@ -125,7 +124,7 @@ public class EmprestimoBoundary implements ActionListener, ListSelectionListener
 		ComponenteFormater.formataJlable(lblObra, Color.DARK_GRAY, 20);
 		ComponenteFormater.formataJlable(lbltitulo, Color.BLUE, 26);
 		lbltitulo.setHorizontalAlignment(JLabel.CENTER);
-		
+
 		ComponenteFormater.formataJButton(btnAlterar);
 		ComponenteFormater.formataJButton(btnDevolver);
 		ComponenteFormater.formataJButton(btnExcluir);
@@ -133,7 +132,7 @@ public class EmprestimoBoundary implements ActionListener, ListSelectionListener
 		ComponenteFormater.formataJButton(btnPesquisarObra);
 		ComponenteFormater.formataJButton(btnSalvar);
 		ComponenteFormater.formataJButton(btnVoltar);
-		
+
 		ComponenteFormater.formataJPanel(painelBotoes);
 		ComponenteFormater.formataJPanel(painelCentro);
 		ComponenteFormater.formataJPanel(painelLeft);
@@ -143,36 +142,25 @@ public class EmprestimoBoundary implements ActionListener, ListSelectionListener
 		ComponenteFormater.formataJPanel(linha2);
 		ComponenteFormater.formataJPanel(linha3);
 		ComponenteFormater.formataJPanel(linha4);
-		
+
 		ComponenteFormater.formataJScrollPane(scrollPane);
 		ComponenteFormater.formataJTable(tabela);
 		tabela.setModel(control);
-		
+
 		lblDataSaida.setPreferredSize(lblNomeObra.getPreferredSize());
 		lblDestinatario.setPreferredSize(lblNomeObra.getPreferredSize());
 		lblObra.setPreferredSize(lblNomeObra.getPreferredSize());
 		dcDevolucao.setPreferredSize(lblNomeObra.getPreferredSize());
 		dcSaida.setPreferredSize(lblNomeObra.getPreferredSize());
-		
-		btnSalvar.setIcon(
-				new ImageIcon(VisitanteBoundary.class.getResource("/edu/museu/resource/save.png"))
-				);
-		btnAlterar.setIcon(
-				new ImageIcon(VisitanteBoundary.class.getResource("/edu/museu/resource/edit.png"))
-				);
-		btnExcluir.setIcon(
-				new ImageIcon(VisitanteBoundary.class.getResource("/edu/museu/resource/delete.png"))
-				);
-		btnVoltar.setIcon(
-				new ImageIcon(VisitanteBoundary.class.getResource("/edu/museu/resource/back.png"))
-				);
-		btnPesquisarLocal.setIcon(
-				new ImageIcon(VisitanteBoundary.class.getResource("/edu/museu/resource/lupa_16.png"))
-				);
-		btnPesquisarObra.setIcon(
-				new ImageIcon(VisitanteBoundary.class.getResource("/edu/museu/resource/lupa_16.png"))
-				);
-		
+
+		btnSalvar.setIcon(new ImageIcon(VisitanteBoundary.class.getResource("/edu/museu/resource/save.png")));
+		btnAlterar.setIcon(new ImageIcon(VisitanteBoundary.class.getResource("/edu/museu/resource/edit.png")));
+		btnExcluir.setIcon(new ImageIcon(VisitanteBoundary.class.getResource("/edu/museu/resource/delete.png")));
+		btnVoltar.setIcon(new ImageIcon(VisitanteBoundary.class.getResource("/edu/museu/resource/back.png")));
+		btnPesquisarLocal
+				.setIcon(new ImageIcon(VisitanteBoundary.class.getResource("/edu/museu/resource/lupa_16.png")));
+		btnPesquisarObra.setIcon(new ImageIcon(VisitanteBoundary.class.getResource("/edu/museu/resource/lupa_16.png")));
+
 		btnAlterar.addActionListener(this);
 		btnDevolver.addActionListener(this);
 		btnExcluir.addActionListener(this);
@@ -180,16 +168,16 @@ public class EmprestimoBoundary implements ActionListener, ListSelectionListener
 		btnPesquisarObra.addActionListener(this);
 		btnSalvar.addActionListener(this);
 		btnVoltar.addActionListener(this);
-		
+
 		painelLeft.add(painelCentro, BorderLayout.CENTER);
 		painelLeft.add(painelBotoes, BorderLayout.SOUTH);
-		
-		painelRigh.add(lbltitulo,BorderLayout.NORTH);
-		painelRigh.add(scrollPane,BorderLayout.CENTER);
-		
+
+		painelRigh.add(lbltitulo, BorderLayout.NORTH);
+		painelRigh.add(scrollPane, BorderLayout.CENTER);
+
 		painelPrincipal.add(painelLeft);
 		painelPrincipal.add(painelRigh);
-		
+
 		telaDefault();
 		txtDestinatario.setEditable(false);
 		txtNomeDestinatario.setEditable(false);
@@ -204,11 +192,11 @@ public class EmprestimoBoundary implements ActionListener, ListSelectionListener
 		txtNomeObra.addMouseListener(this);
 		txtObra.addMouseListener(this);
 	}
-	
-	private Emprestimo formToEmprestimo(){
-		if(validaCampos()){
+
+	private Emprestimo formToEmprestimo() {
+		if (validaCampos()) {
 			Emprestimo emprestimo = this.emprestimo;
-			
+
 			emprestimo.setObra_id(Long.parseLong(txtObra.getText()));
 			emprestimo.setNomedaObra(txtNomeObra.getText());
 			emprestimo.setLocal_emprestimo_id(Long.parseLong(txtDestinatario.getText()));
@@ -221,8 +209,8 @@ public class EmprestimoBoundary implements ActionListener, ListSelectionListener
 		}
 		return null;
 	}
-	
-	public void EmprestimoToForm(Emprestimo emprestimo){
+
+	public void EmprestimoToForm(Emprestimo emprestimo) {
 		this.emprestimo = emprestimo;
 		txtDestinatario.setText("" + emprestimo.getLocal_emprestimo_id());
 		txtNomeDestinatario.setText(emprestimo.getLocatario());
@@ -231,12 +219,13 @@ public class EmprestimoBoundary implements ActionListener, ListSelectionListener
 		dcSaida.setDate(emprestimo.getDataSaida());
 		dcDevolucao.setDate(emprestimo.getPrevisaoDevolucao());
 	}
-	private void updateTable(){
+
+	private void updateTable() {
 		tabela.invalidate();
 		tabela.revalidate();
 	}
-	
-	private void telaDefault(){
+
+	private void telaDefault() {
 		btnSalvar.setEnabled(true);
 		btnDevolver.setEnabled(false);
 		btnExcluir.setEnabled(false);
@@ -244,14 +233,16 @@ public class EmprestimoBoundary implements ActionListener, ListSelectionListener
 		btnVoltar.setEnabled(false);
 		limparCampos();
 	}
-	private void telaAlterar(){
+
+	private void telaAlterar() {
 		btnSalvar.setEnabled(false);
 		btnDevolver.setEnabled(true);
 		btnExcluir.setEnabled(true);
 		btnAlterar.setEnabled(true);
-		btnVoltar.setEnabled(true);		
+		btnVoltar.setEnabled(true);
 	}
-	private void limparCampos(){
+
+	private void limparCampos() {
 		txtDestinatario.setText("");
 		txtNomeDestinatario.setText("");
 		txtNomeObra.setText("");
@@ -259,35 +250,35 @@ public class EmprestimoBoundary implements ActionListener, ListSelectionListener
 		dcDevolucao.setDate(null);
 		dcSaida.setDate(null);
 	}
-	
-	private boolean validaCampos(){
-		if(
-				txtDestinatario.getText().length() <= 0 ||
-				txtNomeDestinatario.getText().length() <= 0 ||
-				txtNomeObra.getText().length() <= 0 ||
-				txtObra.getText().length() <= 0 ||
-				dcDevolucao.getDate() == null ||
-				dcSaida.getDate() == null 
-				){
-			JOptionPane.showMessageDialog(painelPrincipal, "preencha corretamente todos os campos!", "erro de preenchimento", JOptionPane.ERROR_MESSAGE);
+
+	private boolean validaCampos() {
+		if (txtDestinatario.getText().length() <= 0 || txtNomeDestinatario.getText().length() <= 0
+				|| txtNomeObra.getText().length() <= 0 || txtObra.getText().length() <= 0
+				|| dcDevolucao.getDate() == null || dcSaida.getDate() == null) {
+			JOptionPane.showMessageDialog(painelPrincipal, "preencha corretamente todos os campos!",
+					"erro de preenchimento", JOptionPane.ERROR_MESSAGE);
 			return false;
-		}else if(dcDevolucao.getDate().getTime() < dcSaida.getDate().getTime()){
-			JOptionPane.showMessageDialog(painelPrincipal, "a data prevista para devolução não pode ser menor que a data de saida", "erro de preenchimento", JOptionPane.ERROR_MESSAGE);
-			return false;			
+		} else if (dcDevolucao.getDate().getTime() < dcSaida.getDate().getTime()) {
+			JOptionPane.showMessageDialog(painelPrincipal,
+					"a data prevista para devolução não pode ser menor que a data de saida", "erro de preenchimento",
+					JOptionPane.ERROR_MESSAGE);
+			return false;
 		}
 		return true;
 	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == btnPesquisarObra){
-			FormPesquisa pesquisa  = new PesquisaObra();
+		if (e.getSource() == btnPesquisarObra) {
+			FormPesquisa pesquisa = new PesquisaObra();
+			PesquisaObraControl.selectDisponiveis();
 			pesquisa.addObserver(this);
 			pesquisa.show();
-		}else if(e.getSource() == btnPesquisarLocal){
-			FormPesquisa pesquisa  = new PesquisaLocais();
+		} else if (e.getSource() == btnPesquisarLocal) {
+			FormPesquisa pesquisa = new PesquisaLocais();
 			pesquisa.addObserver(this);
 			pesquisa.show();
-		}else if(e.getSource() == btnSalvar && validaCampos()){
+		} else if (e.getSource() == btnSalvar && validaCampos()) {
 			try {
 				control.salvar(formToEmprestimo());
 				updateTable();
@@ -295,15 +286,20 @@ public class EmprestimoBoundary implements ActionListener, ListSelectionListener
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
-		}else if(e.getSource() == btnExcluir){
-			try {
-				control.excluir(formToEmprestimo());
-				updateTable();
-				telaDefault();
-			} catch (SQLException e1) {
-				e1.printStackTrace();
+		} else if (e.getSource() == btnExcluir) {
+			int resposta = JOptionPane.showConfirmDialog(painelPrincipal,
+					"Você está prestes a excluir um registro!\nTem certeza que deseja continuar?", 
+					"Confirmação",JOptionPane.YES_NO_OPTION);
+			if (resposta == JOptionPane.YES_OPTION) {
+				try {
+					control.excluir(formToEmprestimo());
+					updateTable();
+					telaDefault();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
 			}
-		}else if(e.getSource() == btnAlterar && validaCampos()){
+		} else if (e.getSource() == btnAlterar && validaCampos()) {
 			try {
 				control.alterar(formToEmprestimo());
 				updateTable();
@@ -311,18 +307,22 @@ public class EmprestimoBoundary implements ActionListener, ListSelectionListener
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
-		}else if(e.getSource() == btnDevolver){
-			try {
-				control.devolver(formToEmprestimo());
-				updateTable();
-				telaDefault();
-			} catch (SQLException e1) {
-				e1.printStackTrace();
+		} else if (e.getSource() == btnDevolver) {
+			int resposta = JOptionPane.showConfirmDialog(painelPrincipal, "Confirma devolução da obra?", "",
+					JOptionPane.YES_NO_OPTION);
+			if (resposta == JOptionPane.YES_OPTION) {
+				try {
+					control.devolver(formToEmprestimo());
+					updateTable();
+					telaDefault();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
 			}
-		}else if(e.getSource() == btnVoltar){
+		} else if (e.getSource() == btnVoltar) {
 			telaDefault();
 		}
-		
+
 	}
 
 	@Override
@@ -335,53 +335,53 @@ public class EmprestimoBoundary implements ActionListener, ListSelectionListener
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		if(arg0.getSource() == txtObra || arg0.getSource() == txtNomeObra){
-			FormPesquisa pesquisa  = new PesquisaObra();
+		if (arg0.getSource() == txtObra || arg0.getSource() == txtNomeObra) {
+			FormPesquisa pesquisa = new PesquisaObra();
 			pesquisa.addObserver(this);
 			pesquisa.show();
-		}else if(arg0.getSource() == txtDestinatario || arg0.getSource() == txtNomeDestinatario){
-			FormPesquisa pesquisa  = new PesquisaLocais();
+		} else if (arg0.getSource() == txtDestinatario || arg0.getSource() == txtNomeDestinatario) {
+			FormPesquisa pesquisa = new PesquisaLocais();
 			pesquisa.addObserver(this);
 			pesquisa.show();
 		}
-		
+
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void update(Object o) {
-		if (o.getClass() == Obra.class){
+		if (o.getClass() == Obra.class) {
 			Obra obra = (Obra) o;
 			txtNomeObra.setText(obra.getNomeObra());
 			txtObra.setText("" + obra.getId());
-		}else if(o.getClass() == Local.class){
+		} else if (o.getClass() == Local.class) {
 			Local local = (Local) o;
 			txtDestinatario.setText("" + local.getId());
 			txtNomeDestinatario.setText(local.getNomeLocal());
 		}
-		
+
 	}
 }

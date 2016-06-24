@@ -20,6 +20,7 @@ import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import edu.museu.control.ComponenteFormater;
+import edu.museu.control.PesquisaObraControl;
 
 public class TelaPrincipal implements ActionListener, MouseListener {
 	private JFrame tela = new JFrame("Smart Museu");
@@ -117,7 +118,7 @@ public class TelaPrincipal implements ActionListener, MouseListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if (arg0.getSource() == btnObra) {
-			
+			PesquisaObraControl.selectAll();
 			obraForm.getPainelPrincipal().invalidate();
 			obraForm.getPainelPrincipal().revalidate();
 			selectTela(obraForm.getPainelPrincipal());
@@ -133,11 +134,13 @@ public class TelaPrincipal implements ActionListener, MouseListener {
 			selectTela(locaisForm.getPainelPrincipal());
 			tela.setTitle("Smart Museu - Gestão de locais");
 		} else if (arg0.getSource() == btnEmprestimo) {
+			PesquisaObraControl.selectDisponiveis();
 			emprestimoForm.getPainelPrincipal().invalidate();
 			emprestimoForm.getPainelPrincipal().revalidate();
 			selectTela(emprestimoForm.getPainelPrincipal());
 			tela.setTitle("Smart Museu - Gestão de emprestimos");
 		} else if (arg0.getSource() == btnExposicao) {
+			PesquisaObraControl.selectDisponiveis();
 			exposicaoForm.getPainelPrincipal().invalidate();
 			exposicaoForm.getPainelPrincipal().revalidate();
 			selectTela(exposicaoForm.getPainelPrincipal());

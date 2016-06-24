@@ -33,7 +33,7 @@ import edu.museu.entity.Local;
 import edu.museu.entity.Obra;
 import edu.museu.entity.Visitante;
 
-public class ObraBoundary implements ActionListener, Observer{
+public class ObraBoundary implements ActionListener, Observer {
 	private JLabel lblImagemObra = new JLabel();
 	private JLabel lblNomeObra = new JLabel("Obra");
 	private JLabel lblNomeAutor = new JLabel("Autor");
@@ -43,7 +43,7 @@ public class ObraBoundary implements ActionListener, Observer{
 	private JLabel lblCategoria = new JLabel("Categoria");
 	private JLabel lblLocalizacao = new JLabel("Localizacao");
 	private JCheckBox disponibilidade = new JCheckBox("Disponivel para emprestimo?");
-	
+
 	private JTextField txtObra = new JTextField(40);
 	private JTextField txtAutor = new JTextField(40);
 	private JTextArea txtBiografia = new JTextArea();
@@ -51,45 +51,41 @@ public class ObraBoundary implements ActionListener, Observer{
 	private JComboBox<String> cbTipo = new JComboBox<String>();
 	private JComboBox<String> cbCategoria = new JComboBox<String>();
 	private JComboBox<String> cbLocalizacao = new JComboBox<String>();
-	
+
 	private JButton btnSalvar = new JButton("Salvar");
 	private JButton btnAlterar = new JButton("Alterar");
 	private JButton btnExcluir = new JButton("Excluir");
 	private JButton btnCarregaImagem = new JButton("Carregar Imagem");
 	private JButton btnPesquisaObra = new JButton();
 	private JButton btnVoltar = new JButton("Voltar");
-	private JPanel painelPrincipal = new JPanel(new GridLayout(1, 2, 0,0));
-	
+	private JPanel painelPrincipal = new JPanel(new GridLayout(1, 2, 0, 0));
+
 	private ObraControl control = new ObraControl();
 	private Obra obra = new Obra();
-	
+
 	public JPanel getPainelPrincipal() {
 		return painelPrincipal;
 	}
-
 
 	public void setPainelPrincipal(JPanel painelPrincipal) {
 		this.painelPrincipal = painelPrincipal;
 	}
 
-
-	
-	
 	public ObraBoundary() {
 		JPanel painelPrincipalLeft = new JPanel(new BorderLayout());
 		JPanel painelPrincipalRight = new JPanel(new BorderLayout());
 		JPanel painelCampos = new JPanel(new GridLayout(6, 1));
 		JPanel painelRightAux = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 5));
 		JPanel painelBotoes = new JPanel(new FlowLayout(FlowLayout.CENTER, 30, 0));
-		
+
 		painelBotoes.add(btnSalvar);
 		painelBotoes.add(btnAlterar);
 		painelBotoes.add(btnExcluir);
 		painelBotoes.add(btnVoltar);
-		
+
 		painelPrincipalRight.setSize(200, 400);
 		painelPrincipalRight.setPreferredSize(painelPrincipalRight.getSize());
-		
+
 		JScrollPane painelBiografia = new JScrollPane();
 		painelBiografia.setPreferredSize(new Dimension(600, 100));
 		painelBiografia.setViewportView(txtBiografia);
@@ -101,8 +97,7 @@ public class ObraBoundary implements ActionListener, Observer{
 		JPanel linha4 = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 2));
 		JPanel linha5 = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 2));
 		JPanel linha6 = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 2));
-		
-		
+
 		linha1.add(lblNomeObra);
 		linha1.add(txtObra);
 		linha1.add(btnPesquisaObra);
@@ -116,30 +111,30 @@ public class ObraBoundary implements ActionListener, Observer{
 
 		linha4.add(lblTipo);
 		linha4.add(cbTipo);
-		
+
 		linha5.add(lblCategoria);
 		linha5.add(cbCategoria);
 
 		linha6.add(lblLocalizacao);
 		linha6.add(cbLocalizacao);
-		
+
 		painelCampos.add(linha1);
 		painelCampos.add(linha2);
 		painelCampos.add(linha3);
 		painelCampos.add(linha4);
 		painelCampos.add(linha5);
 		painelCampos.add(linha6);
-		
+
 		painelPrincipalLeft.add(lblImagemObra, BorderLayout.CENTER);
 		painelPrincipalLeft.add(btnCarregaImagem, BorderLayout.SOUTH);
-		
+
 		JPanel painelAuxBiografia = new JPanel(new BorderLayout());
 		painelAuxBiografia.add(lblBiografia, BorderLayout.NORTH);
 		painelAuxBiografia.add(painelBiografia, BorderLayout.CENTER);
-		
+
 		painelRightAux.add(painelCampos);
 		painelRightAux.add(painelAuxBiografia);
-		
+
 		btnCarregaImagem.addActionListener(this);
 		btnAlterar.addActionListener(this);
 		btnExcluir.addActionListener(this);
@@ -147,40 +142,27 @@ public class ObraBoundary implements ActionListener, Observer{
 		btnSalvar.addActionListener(this);
 		btnVoltar.addActionListener(this);
 
-		btnPesquisaObra.setIcon(
-				new ImageIcon(ObraBoundary.class.getResource("/edu/museu/resource/lupa_16.png"))
-				);
-		btnSalvar.setIcon(
-				new ImageIcon(ObraBoundary.class.getResource("/edu/museu/resource/save.png"))
-				);
-		btnAlterar.setIcon(
-				new ImageIcon(ObraBoundary.class.getResource("/edu/museu/resource/edit.png"))
-				);
-		btnExcluir.setIcon(
-				new ImageIcon(ObraBoundary.class.getResource("/edu/museu/resource/delete.png"))
-				);
-		btnVoltar.setIcon(
-				new ImageIcon(ObraBoundary.class.getResource("/edu/museu/resource/back.png"))
-				);
-		btnCarregaImagem.setIcon(
-				new ImageIcon(ObraBoundary.class.getResource("/edu/museu/resource/open.png"))
-				);
-		
-		cbTipo.setModel(new DefaultComboBoxModel(new String[] { "Selecione", 
-						"Pintura", "Escultura", "Fotografia", "Livro", "Outro" }));
-		cbCategoria.setModel(
-				new DefaultComboBoxModel(new String[] { "Selecione", "Moderna", "Barroca", "Cubista", "Realista", "Outro" }));
+		btnPesquisaObra.setIcon(new ImageIcon(ObraBoundary.class.getResource("/edu/museu/resource/lupa_16.png")));
+		btnSalvar.setIcon(new ImageIcon(ObraBoundary.class.getResource("/edu/museu/resource/save.png")));
+		btnAlterar.setIcon(new ImageIcon(ObraBoundary.class.getResource("/edu/museu/resource/edit.png")));
+		btnExcluir.setIcon(new ImageIcon(ObraBoundary.class.getResource("/edu/museu/resource/delete.png")));
+		btnVoltar.setIcon(new ImageIcon(ObraBoundary.class.getResource("/edu/museu/resource/back.png")));
+		btnCarregaImagem.setIcon(new ImageIcon(ObraBoundary.class.getResource("/edu/museu/resource/open.png")));
+
+		cbTipo.setModel(new DefaultComboBoxModel(
+				new String[] { "Selecione", "Pintura", "Escultura", "Fotografia", "Livro", "Outro" }));
+		cbCategoria.setModel(new DefaultComboBoxModel(
+				new String[] { "Selecione", "Moderna", "Barroca", "Cubista", "Realista", "Outro" }));
 		cbLocalizacao.setModel(new DefaultComboBoxModel(
 				new String[] { "Selecione", "Salao Principal", "Primeiro Andar", "Subterr\u00E2neo", "Outro" }));
 
-		
 		ComponenteFormater.formataJButton(btnAlterar);
 		ComponenteFormater.formataJButton(btnCarregaImagem);
 		ComponenteFormater.formataJButton(btnExcluir);
 		ComponenteFormater.formataJButton(btnPesquisaObra);
 		ComponenteFormater.formataJButton(btnSalvar);
 		ComponenteFormater.formataJButton(btnVoltar);
-		
+
 		int tam = 20;
 		Color cor = Color.DARK_GRAY;
 		ComponenteFormater.formataJlable(lblBiografia, cor, tam);
@@ -195,11 +177,11 @@ public class ObraBoundary implements ActionListener, Observer{
 		ComponenteFormater.formataJComboBox(cbCategoria, Color.black, tam);
 		ComponenteFormater.formataJComboBox(cbLocalizacao, Color.black, tam);
 		ComponenteFormater.formataJComboBox(cbTipo, Color.black, tam);
-		
+
 		ComponenteFormater.formataJCheckBox(disponibilidade, cor, tam);
-		
+
 		ComponenteFormater.formataJTextArea(txtBiografia, Color.black, tam);
-		
+
 		ComponenteFormater.formataJPanel(painelAuxBiografia);
 		ComponenteFormater.formataJPanel(painelBotoes);
 		ComponenteFormater.formataJPanel(painelCampos);
@@ -219,23 +201,22 @@ public class ObraBoundary implements ActionListener, Observer{
 		lblNomeAutor.setPreferredSize(lblDataObra.getPreferredSize());
 		lblNomeObra.setPreferredSize(lblDataObra.getPreferredSize());
 		lblTipo.setPreferredSize(lblDataObra.getPreferredSize());
-		
+
 		lblBiografia.setHorizontalAlignment(JLabel.CENTER);
-		
+
 		dcDataObra.setPreferredSize(cbLocalizacao.getPreferredSize());
 		cbTipo.setPreferredSize(cbLocalizacao.getPreferredSize());
 		cbCategoria.setPreferredSize(cbLocalizacao.getPreferredSize());
-				
+
 		painelPrincipalRight.add(painelRightAux, BorderLayout.CENTER);
 		painelPrincipalRight.add(painelBotoes, BorderLayout.SOUTH);
-		
-		
+
 		painelPrincipal.add(painelPrincipalLeft);
 		painelPrincipal.add(painelPrincipalRight);
 		telaDefault();
 	}
 
-	public Obra formToObra(){
+	public Obra formToObra() {
 		obra.setBiografia(txtBiografia.getText());
 		obra.setCategoriaObra(cbCategoria.getSelectedItem().toString());
 		obra.setDataObra(dcDataObra.getDate());
@@ -247,14 +228,15 @@ public class ObraBoundary implements ActionListener, Observer{
 		obra.setTipoObra(cbTipo.getSelectedItem().toString());
 		return obra;
 	}
-	
-	public void telaDefault(){
+
+	public void telaDefault() {
 		btnSalvar.setEnabled(true);
 		btnAlterar.setEnabled(false);
 		btnExcluir.setEnabled(false);
 		btnVoltar.setEnabled(false);
 		limapaCampo();
 	}
+
 	private void limapaCampo() {
 		txtAutor.setText("");
 		txtBiografia.setText("");
@@ -267,63 +249,63 @@ public class ObraBoundary implements ActionListener, Observer{
 		lblImagemObra.setIcon(null);
 	}
 
-
-	public void telaAlterar(){
+	public void telaAlterar() {
 		btnSalvar.setEnabled(false);
 		btnAlterar.setEnabled(true);
 		btnExcluir.setEnabled(true);
-		btnVoltar.setEnabled(true);		
+		btnVoltar.setEnabled(true);
 	}
-	
-	public boolean validaCampos(){
-		if(
-			txtAutor.getText().length() == 0 ||	
-			txtBiografia.getText().length() == 0 ||	
-			txtObra.getText().length() == 0 ||
-			cbCategoria.getSelectedItem().toString().equals("Selecione") ||
-			cbLocalizacao.getSelectedItem().toString().equals("Selecione") ||
-			cbTipo.getSelectedItem().toString().equals("Selecione") ||
-			dcDataObra.getDate() == null ||
-			lblImagemObra.getIcon() == null
-				){
-			JOptionPane.showMessageDialog(painelPrincipal, "Preencha corretamente todos os campos", "Validação de campos", JOptionPane.ERROR_MESSAGE);
+
+	public boolean validaCampos() {
+		if (txtAutor.getText().length() == 0 || txtBiografia.getText().length() == 0 || txtObra.getText().length() == 0
+				|| cbCategoria.getSelectedItem().toString().equals("Selecione")
+				|| cbLocalizacao.getSelectedItem().toString().equals("Selecione")
+				|| cbTipo.getSelectedItem().toString().equals("Selecione") || dcDataObra.getDate() == null
+				|| lblImagemObra.getIcon() == null) {
+			JOptionPane.showMessageDialog(painelPrincipal, "Preencha corretamente todos os campos",
+					"Validação de campos", JOptionPane.ERROR_MESSAGE);
 			return false;
-		}else{
+		} else {
 			return true;
 		}
-			
+
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btnCarregaImagem){
+		if (e.getSource() == btnCarregaImagem) {
 			control.carregaImagem(lblImagemObra);
-		}else if(e.getSource() == btnSalvar && validaCampos()){
+		} else if (e.getSource() == btnSalvar && validaCampos()) {
 			control.salvar(formToObra());
 			telaDefault();
-		}else if(e.getSource() == btnAlterar && validaCampos()){
+		} else if (e.getSource() == btnAlterar && validaCampos()) {
 			control.alterar(formToObra());
 			telaAlterar();
-		}else if(e.getSource() == btnExcluir){
-			control.deletar(formToObra());
+		} else if (e.getSource() == btnExcluir) {
+			int resposta = JOptionPane.showConfirmDialog(painelPrincipal,
+					"Você esta prestes a excluir um registro!\nTem certeza que deseja continuar", "Confirmação",
+					JOptionPane.YES_NO_OPTION);
+			if (resposta == JOptionPane.YES_OPTION) {
+				control.deletar(formToObra());
+				telaDefault();
+			}
+		} else if (e.getSource() == btnVoltar) {
 			telaDefault();
-		}else if(e.getSource() == btnVoltar){
-			telaDefault();
-		}else if(e.getSource() == btnPesquisaObra){
+		} else if (e.getSource() == btnPesquisaObra) {
 			FormPesquisa pesquisaObra = new PesquisaObra();
 			pesquisaObra.addObserver(this);
-		    pesquisaObra.show();
-		    telaAlterar();
+			pesquisaObra.show();
+			telaAlterar();
 		}
-		
+
 	}
+
 	@Override
 	public void update(Object o) {
 		this.obra = (Obra) o;
 		obra.setImagem(control.getImage(obra.getId()));
 		obraToForm(obra);
 	}
-
 
 	private void obraToForm(Obra obra) {
 		txtAutor.setText(obra.getNomeAutor());
@@ -335,5 +317,5 @@ public class ObraBoundary implements ActionListener, Observer{
 		dcDataObra.setDate(obra.getDataObra());
 		disponibilidade.setSelected(obra.isDisponivel());
 		lblImagemObra.setIcon(obra.getImagem());
-	}	
+	}
 }

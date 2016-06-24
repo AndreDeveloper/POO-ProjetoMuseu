@@ -9,13 +9,24 @@ import javax.swing.event.TableModelListener;
 import edu.museu.entity.Obra;
 import edu.museu.infrastructure.ObraDAO;
 
-public class PesquisaObraControl implements PesquisaControl{
+public class PesquisaObraControl implements PesquisaControl {
 	private static List<Obra> lista = new ObraDAO().selectAll();
+	private static boolean byDisponiveis = false;
+	
+	public static void selectAll(){
+		lista = new ObraDAO().selectAll();
+		byDisponiveis = false;
+	}
+
+	public static void selectDisponiveis(){
+		lista = new ObraDAO().selectByObrasDisponiveis();
+		byDisponiveis = true;
+	}
 	
 	@Override
 	public void addTableModelListener(TableModelListener l) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -90,13 +101,13 @@ public class PesquisaObraControl implements PesquisaControl{
 	@Override
 	public void removeTableModelListener(TableModelListener l) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -107,9 +118,13 @@ public class PesquisaObraControl implements PesquisaControl{
 	}
 
 	@Override
-	public List preencheLista(String value) {		
+	public List preencheLista(String value) {
 		ObraDAO dao = new ObraDAO();
-		lista = dao.selectByName(value);
+		if (byDisponiveis) {
+			lista = dao.selectByNameAndDisponiveis(value);
+		} else {
+			lista = dao.selectByName(value);
+		}
 		return lista;
 	}
 
